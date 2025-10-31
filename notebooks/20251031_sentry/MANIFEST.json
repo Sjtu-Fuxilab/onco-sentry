@@ -1,0 +1,27 @@
+{
+  "notebook": "sentry.ipynb",
+  "repo_path": "notebooks/20251031_sentry",
+  "created": "2025-10-31T14:23:07",
+  "authors": [
+    "Sanwal Ahmad Zafar",
+    "Assoc. prof. Wei Qin"
+  ],
+  "artifacts": {
+    "raw_ipynb": {
+      "file": "notebooks/20251031_sentry/sentry.ipynb",
+      "sha256": "078cd65c06675304df73939809230448736110e74be38a106ab7fab3ec2ea0c8"
+    },
+    "stripped_ipynb": {
+      "file": "notebooks/20251031_sentry/sentry.stripped.ipynb",
+      "sha256": "45de58278466b8b0b9871f4d358f5f998783bcf45423db689e8e39359b04b92f"
+    },
+    "py_export": {
+      "file": "notebooks/20251031_sentry/sentry.py",
+      "sha256": "12141de017e640c07d3a19651b03aade37f45c5c439f8dccc1fb4059dbceaa3b"
+    },
+    "html_export": {
+      "file": "notebooks/20251031_sentry/sentry.html",
+      "sha256": "d8d9446ffd833bb569faa09ffd5bacf0a9578dcc940564cd3ddb9885c4db6687"
+    }
+  }
+}
