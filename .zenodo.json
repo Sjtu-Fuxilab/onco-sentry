@@ -2,10 +2,26 @@
   "title": "ONCO-SENTRY: Oncology-Aware Mental Health Crisis Evaluation for LLMs",
   "upload_type": "software",
   "creators": [
-    {"name": "Zafar, Sanwal Ahmad", "affiliation": "Shanghai Jiao Tong University", "orcid": ""},
-    {"name": "Qin, Wei", "affiliation": "Shanghai Jiao Tong University", "orcid": ""}
+    {
+      "name": "Zafar, Sanwal Ahmad",
+      "affiliation": "Shanghai Jiao Tong University",
+      "orcid": ""
+    },
+    {
+      "name": "Qin, Wei",
+      "affiliation": "Shanghai Jiao Tong University",
+      "orcid": ""
+    }
   ],
   "description": "Guideline-grounded evaluation for LLM safety in mental-health crises with oncology context. No real patient data; expert-authored vignettes.",
   "access_right": "open",
-  "license": "MIT"
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Assoc. Prof. Wei Qin",
+      "type": "ContactPerson",
+      "affiliation": "Shanghai Jiao Tong University",
+      "email": "wqin@sjtu.edu.cn"
+    }
+  ]
 }
