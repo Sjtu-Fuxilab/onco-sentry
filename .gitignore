@@ -112,3 +112,22 @@ docs/_templates/
 *.tmp
 *.bak
 *.log
+# ==== Derived outputs (excluded) ====
+runs/
+outputs/
+results/
+figures/
+tables/
+logs/
+models/
+checkpoints/
+# ==== Caches / temp / build ====
+*.pyc
+.mypy_cache/
+.cache/
+# ==== Local environments / IDE ====
+.venv/
+# ==== Large binaries (keep via Releases/Zenodo/LFS instead) ====
+*.zip
+*.tar
+*.tar.gz
