@@ -1,0 +1,12 @@
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+ignore = [
+  "F401",  # imported but unused (templates)
+  "F841",  # assigned but never used
+  "E501",  # long lines (docs/templates)
+]
+exclude = [
+  ".git", ".github",
+  "data", "runs", "logs", "errors",
+]
