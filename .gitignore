@@ -1,0 +1,114 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv
+pipenv/
+
+# Data and Results (NEVER UPLOAD REAL DATA)
+data/*
+!data/.gitkeep
+runs/*
+!runs/.gitkeep
+scores/
+figures/*.png
+figures/*.pdf
+tables/*.csv
+rater/ingest/*.csv
+rater/forms/*.csv
+!rater/forms/.gitkeep
+!rater/ingest/.gitkeep
+logs/*
+!logs/.gitkeep
+errors/*
+!errors/.gitkeep
+advanced_validation/*
+!advanced_validation/.gitkeep
+reports/
+
+# Sensitive configuration
+artifacts/registry/models_private.json
+*.key
+.env
+config.json
+config.yaml
+env.yml
+*__PRIVATE.json
+
+# API keys and credentials
+anthropic_key.txt
+openai_key.txt
+.api_keys
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*~
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.spyderproject
+.spyproject
+.ropeproject
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+!examples/*.ipynb
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Docs build
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# Large files
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib
+*.model
+*.pt
+*.pth
+
+# Temp
+*.tmp
+*.bak
+*.log
