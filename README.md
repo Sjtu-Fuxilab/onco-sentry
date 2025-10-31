@@ -148,3 +148,10 @@ This is a research evaluation tool, not a clinical system.
 ## Notebooks
 
 - **sentry.ipynb** — 20251031 — [notebooks/20251031_sentry](/Sjtu-Fuxilab/onco-sentry/tree/main/notebooks/20251031_sentry)
+
+## Reproducibility & Repo Hygiene
+
+- This repository excludes **derived outputs** (e.g., `runs/`, `results/`, `figures/`, `tables/`, `reports/`, `logs/`, `models/`, `checkpoints/`) and caches from version control.  
+- **Notebook outputs are stripped** automatically by a pre-commit hook (`nbstripout`) and enforced by CI on every push / PR.  
+- Rendered artifacts (`*.html`, `*.pdf`, `*.svg`) are kept as documentation and **do not affect language statistics**.  
+- To reproduce figures/tables, run the provided scripts/notebooks; artifacts will be written under `runs/` or `results/`.
