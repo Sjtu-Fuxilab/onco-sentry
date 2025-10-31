@@ -365,8 +365,8 @@ def tree(root: Path, depth=2):
     print("📁 rubric"); print("📁 runs/T1"); print("📁 runs/T2"); print("📁 scores")
     print("📁 figures/png"); print("📁 figures/pdf"); print("📁 figures/data")
     print("📁 rater/forms"); print("📁 rater/ingest")
-    print("📁 artifacts/registry"); 
-    print("📄 artifacts/registry/guideline_map.json"); 
+    print("📁 artifacts/registry");
+    print("📄 artifacts/registry/guideline_map.json");
     print("📄 artifacts/registry/models_private.json")
 
 tree(ROOT)
@@ -436,7 +436,7 @@ print(f"[{STAMP()}] Loaded vignettes: EN={len(en)} UR={len(ur)} TOTAL={len(all_v
 
 # ---------- Sampling Strategy ----------
 def sample_severity_weighted(
-    vignettes: List[Dict], 
+    vignettes: List[Dict],
     target_n: int,
     severity_weights: Dict[str, float] = None
 ) -> List[Dict]:
@@ -482,7 +482,7 @@ def sample_severity_weighted(
 
     # Top up remainder with high severity
     if rem > 0:
-        high_pool = [v for v in vignettes if v["severity"] == "high" 
+        high_pool = [v for v in vignettes if v["severity"] == "high"
                      and v["vignette_id"] not in {s["vignette_id"] for s in selected}]
         random.shuffle(high_pool)
         selected.extend(high_pool[:rem])
@@ -524,7 +524,7 @@ def sample_active_learning(vignettes: List[Dict], target_n: int) -> List[Dict]:
 # ---------- Select vignettes based on strategy ----------
 if STAGE_CONFIG["sampling_strategy"] == "severity_weighted":
     selected = sample_severity_weighted(
-        all_vignettes, 
+        all_vignettes,
         STAGE_CONFIG["target_n"],
         STAGE_CONFIG.get("severity_weights")
     )
@@ -587,7 +587,7 @@ FIELD_BASE = [
     "scenario_text"
 ]
 FIELD_RATER = [
-    "rater_id", "realism_1to5", "severity_fit_1to5", 
+    "rater_id", "realism_1to5", "severity_fit_1to5",
     "appropriateness_1to5", "clinician_notes"
 ]
 FIELD_ITEMS = [f"rater_req__{iid}" for iid in SMS_IDS]
@@ -1034,11 +1034,11 @@ for it, g in SC.groupby("item_id"):
     pvt = g.pivot_table(index=["vignette_id"], columns="rater_id", values="rater_bool", aggfunc="first")
     vals=[]; ns=[]
     for r1, r2 in pairs:
-        if r1 not in pvt.columns or r2 not in pvt.columns: 
+        if r1 not in pvt.columns or r2 not in pvt.columns:
             continue
         a = pvt[r1].dropna(); b = pvt[r2].dropna()
         idx = a.index.intersection(b.index)
-        if len(idx)==0: 
+        if len(idx)==0:
             continue
         vals.append(cohen_kappa(a.loc[idx].astype(int).values, b.loc[idx].astype(int).values))
         ns.append(len(idx))
@@ -1613,7 +1613,7 @@ def infer_items_from_df(df):
     for c in df.columns:
         if _is_item_col(c):
             # ensure no suffix
-            if c.endswith("_x") or c.endswith("_y"): 
+            if c.endswith("_x") or c.endswith("_y"):
                 continue
             # keep canonical
             items.append(c.split("__",1)[1])
@@ -1895,7 +1895,7 @@ if __name__ == "__main__":
 # In[ ]:
 
 
-# SENTRY-MH · Script 07 (Advanced Validation: LLM + Active Learning + Calibration) 
+# SENTRY-MH · Script 07 (Advanced Validation: LLM + Active Learning + Calibration)
 from __future__ import annotations
 import os, sys, json, time, warnings
 from pathlib import Path
@@ -1925,7 +1925,7 @@ CALIBRATION_BINS = 10
 # ============ Utilities ============
 def STAMP(): return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-def in_jupyter(): 
+def in_jupyter():
     return "ipykernel" in sys.modules or "JPY_PARENT_PID" in os.environ
 
 def select_root() -> Path:
@@ -2294,8 +2294,8 @@ def compute_feature_matrix(df: pd.DataFrame) -> pd.DataFrame:
         features["n_required_items"] = df[expected_cols].sum(axis=1)
 
     # Select numeric features only
-    feature_cols = [c for c in features.columns if c not in 
-                    ["vignette_id", "scenario_text", "domain", "severity", "language", 
+    feature_cols = [c for c in features.columns if c not in
+                    ["vignette_id", "scenario_text", "domain", "severity", "language",
                      "ground_truth_sms", "clinical_vars", "labels"]]
     feature_cols = [c for c in feature_cols if features[c].dtype in [np.int64, np.float64, int, float]]
 
@@ -2511,7 +2511,7 @@ if model_outputs:
         # Plot 1: Calibration curves (top items)
         ax = axes[0, 0]
         for _, row in CALIB_DF.nlargest(5, "n_samples").iterrows():
-            ax.plot(row["prob_pred"], row["prob_true"], 'o-', 
+            ax.plot(row["prob_pred"], row["prob_true"], 'o-',
                    label=f"{row['item_id'][:20]} (ECE={row['ece']:.3f})", alpha=0.7)
         ax.plot([0, 1], [0, 1], 'k--', label='Perfect calibration')
         ax.set_xlabel("Predicted Probability")
@@ -2523,7 +2523,7 @@ if model_outputs:
         # Plot 2: ECE distribution
         ax = axes[0, 1]
         ax.hist(CALIB_DF["ece"], bins=20, edgecolor='black', alpha=0.7)
-        ax.axvline(CALIB_DF["ece"].mean(), color='red', linestyle='--', 
+        ax.axvline(CALIB_DF["ece"].mean(), color='red', linestyle='--',
                   label=f'Mean ECE = {CALIB_DF["ece"].mean():.3f}')
         ax.set_xlabel("Expected Calibration Error (ECE)")
         ax.set_ylabel("Frequency")
@@ -2554,7 +2554,7 @@ if model_outputs:
 
         # Add correlation coefficient
         corr = np.corrcoef(CALIB_DF["brier_score"], CALIB_DF["ece"])[0, 1]
-        ax.text(0.05, 0.95, f'ρ = {corr:.3f}', transform=ax.transAxes, 
+        ax.text(0.05, 0.95, f'ρ = {corr:.3f}', transform=ax.transAxes,
                verticalalignment='top', bbox=dict(boxstyle='round', alpha=0.8))
 
         plt.tight_layout()
@@ -2744,7 +2744,7 @@ cov_pct = ((stratified_combs - pure_al_combs) / pure_al_combs) * 100
 table2 = pd.DataFrame({
     'Metric': [
         'Mean Uncertainty',
-        'SD Uncertainty', 
+        'SD Uncertainty',
         'Domain×Severity Coverage',
         'Domains Covered',
         'Missing Domains',
@@ -2820,8 +2820,8 @@ from scipy.stats import mannwhitneyu, ttest_ind
 
 # Compare Pure AL vs Stratified
 stat_pure_strat, pval_pure_strat = mannwhitneyu(
-    pure_al['uncertainty_score'], 
-    selection['uncertainty_score'], 
+    pure_al['uncertainty_score'],
+    selection['uncertainty_score'],
     alternative='two-sided'
 )
 
@@ -3196,7 +3196,7 @@ print("="*80)
 
 # ========== MAIN FIGURE 1 ==========
 fig, ax = plt.subplots(figsize=(3.5, 2.5))
-n, bins, patches = ax.hist(uncertainty['uncertainty_score'], bins=50, 
+n, bins, patches = ax.hist(uncertainty['uncertainty_score'], bins=50,
                            color=NATURE_COLORS['neutral'], alpha=0.5, edgecolor='black', linewidth=0.3)
 for i, patch in enumerate(patches):
     if bins[i] >= threshold:
@@ -3283,7 +3283,7 @@ plt.close()
 fig, ax = plt.subplots(figsize=(3.0, 3.0))
 sev_counts = selection['severity'].value_counts().reindex(sev_order, fill_value=0)
 colors_sev = [NATURE_COLORS['high'], NATURE_COLORS['medium'], NATURE_COLORS['low']]
-wedges, texts, autotexts = ax.pie(sev_counts.values, 
+wedges, texts, autotexts = ax.pie(sev_counts.values,
                                    labels=[f'{s.title()}\n({v})' for s, v in zip(sev_counts.index, sev_counts.values)],
                                    autopct='%1.1f%%', colors=colors_sev, startangle=90, explode=[0.05, 0.02, 0.02],
                                    textprops={'fontsize': 7}, wedgeprops={'edgecolor': 'white', 'linewidth': 1})
@@ -3379,7 +3379,7 @@ ax.fill_between(sorted_unc['uncertainty_score'], 0, cumulative_pct,
                where=(sorted_unc['uncertainty_score'] >= threshold), alpha=0.2, color=NATURE_COLORS['primary'])
 ax.text(0.85, 0.45, 'Cumulative', transform=ax.transAxes, fontsize=7, color=NATURE_COLORS['primary'], fontweight='bold')
 ax.text(0.70, 0.12, f'Selection\n(n={len(selection)})', transform=ax.transAxes, fontsize=6, ha='center',
-       color=NATURE_COLORS['high'], bbox=dict(boxstyle='round,pad=0.3', facecolor='white', 
+       color=NATURE_COLORS['high'], bbox=dict(boxstyle='round,pad=0.3', facecolor='white',
        edgecolor=NATURE_COLORS['high'], linewidth=0.5))
 ax.set_xlabel('Uncertainty score', fontsize=8)
 ax.set_ylabel('Cumulative percentage (%)', fontsize=8)
@@ -3436,7 +3436,7 @@ stratified_combs = len(selection.groupby(['domain', 'severity']))
 total_combs = len(uncertainty.groupby(['domain', 'severity']))
 hours = [12, 12, 144]
 coverage = [(pure_al_combs/total_combs)*100, 100, 100]
-mean_unc = [pure_al['uncertainty_score'].mean(), selection['uncertainty_score'].mean(), 
+mean_unc = [pure_al['uncertainty_score'].mean(), selection['uncertainty_score'].mean(),
             uncertainty['uncertainty_score'].mean()]
 
 ax1.scatter(hours[0], coverage[0], s=180, c='#999999', alpha=0.7, edgecolors='black', linewidth=0.8, zorder=5, marker='o')
@@ -3563,7 +3563,7 @@ plt.close()
 fig, ax = plt.subplots(figsize=(3.0, 3.0))
 lang_counts = selection['language'].value_counts()
 colors = [NATURE_COLORS['primary'], NATURE_COLORS['secondary']]
-wedges, texts, autotexts = ax.pie(lang_counts.values, 
+wedges, texts, autotexts = ax.pie(lang_counts.values,
                                    labels=[f'{lang.upper()}\n({count})' for lang, count in lang_counts.items()],
                                    autopct='%1.1f%%', colors=colors, startangle=90, explode=[0.05, 0.05],
                                    textprops={'fontsize': 7}, wedgeprops={'edgecolor': 'white', 'linewidth': 1})
@@ -4149,7 +4149,7 @@ def load_vignettes(jsonl_path: Path) -> List[Dict]:
     with open(jsonl_path, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
-            if not line: 
+            if not line:
                 continue
             rows.append(json.loads(line))
     return rows
@@ -4418,7 +4418,7 @@ from nbconvert import HTMLExporter, PythonExporter
 import ipynbname
 
 # ---------- helpers ----------
-def die(msg): 
+def die(msg):
     print("\nERROR:", msg); raise SystemExit(1)
 
 def headers(token:str):
