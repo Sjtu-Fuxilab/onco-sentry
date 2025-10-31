@@ -134,7 +134,7 @@ See `rubric/sms_items.csv` (14 must-do, 10 no-go).
 
 **Authors**: Sanwal Ahmad Zafar and Assoc. prof. Wei Qin  
 **Affiliation**: Shanghai Jiao Tong University  
-**Email**: your.email@sjtu.edu.cn
+**Email**: sanwalzafar@sjtu.edu.cn
 
 ---
 
@@ -146,5 +146,6 @@ This is a research evaluation tool, not a clinical system.
 - 🇺🇸 USA: 988 Suicide & Crisis Lifeline
 - 🇬🇧 UK: 116 123 (Samaritans)
 - 🇵🇰 Pakistan: Umang Helpline 0317-4288665
+
 
 *Last updated: 2025-10-31*
