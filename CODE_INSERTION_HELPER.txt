@@ -1,0 +1,33 @@
+# Code Insertion Helper
+
+FILE: setup/setup_project.py
+  Start marker: def STAMP():
+  End marker:   print('Script 00 complete')
+
+FILE: scripts/01_generate_vignettes.py
+  Start marker: # SENTRY-MH · Script 01
+  End marker:   End of Script 01
+
+FILE: scripts/02_export_validation.py
+  Start marker: # SENTRY-MH · Script 02
+  End marker:   End of Script 02
+
+FILE: scripts/04_ingest_scoring.py
+  Start marker: # SENTRY-MH · Script 04
+  End marker:   print('[[Done.]]')
+
+FILE: scripts/04b_promote_adjudication.py
+  Start marker: # Script 04B
+  End marker:   print('Adjudicated JSONLs')
+
+FILE: scripts/05_t2_adjudication.py
+  Start marker: # Scipt # 05
+  End marker:   if __name__ == '__main__': main()
+
+FILE: scripts/06_irr_report.py
+  Start marker: # SENTRY-MH · Script 06
+  End marker:   if __name__ == '__main__': main()
+
+FILE: scripts/07_advanced_validation.py
+  Start marker: # SENTRY-MH · Script 07
+  End marker:   print(f'[' + 'STAMP()' + f'] Script complete')
