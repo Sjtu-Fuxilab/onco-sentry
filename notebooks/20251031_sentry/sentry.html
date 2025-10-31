@@ -7873,8 +7873,8 @@ a.anchor-link {
     <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 rubric"</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 runs/T1"</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 runs/T2"</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 scores"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 figures/png"</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 figures/pdf"</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 figures/data"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 rater/forms"</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 rater/ingest"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 artifacts/registry"</span><span class="p">);</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"📄 artifacts/registry/guideline_map.json"</span><span class="p">);</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"📁 artifacts/registry"</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"📄 artifacts/registry/guideline_map.json"</span><span class="p">);</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"📄 artifacts/registry/models_private.json"</span><span class="p">)</span>
 
 <span class="n">tree</span><span class="p">(</span><span class="n">ROOT</span><span class="p">)</span>
@@ -7998,7 +7998,7 @@ Script 00 complete. You can now run Script 01 (generator) when ready.
 
 <span class="c1"># ---------- Sampling Strategy ----------</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">sample_severity_weighted</span><span class="p">(</span>
-    <span class="n">vignettes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> 
+    <span class="n">vignettes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span>
     <span class="n">target_n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">severity_weights</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
@@ -8015,40 +8015,40 @@ Script 00 complete. You can now run Script 01 (generator) when ready.
 <span class="sd">    """</span>
     <span class="k">if</span> <span class="n">severity_weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">severity_weights</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"high"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">"medium"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">"low"</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">}</span>
-    
+
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Using severity weights: </span><span class="si">{</span><span class="n">severity_weights</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    
+
     <span class="n">per_domain</span> <span class="o">=</span> <span class="n">target_n</span> <span class="o">//</span> <span class="nb">len</span><span class="p">(</span><span class="n">DOMAINS</span><span class="p">)</span>
     <span class="n">rem</span> <span class="o">=</span> <span class="n">target_n</span> <span class="o">-</span> <span class="n">per_domain</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">DOMAINS</span><span class="p">)</span>
-    
+
     <span class="n">selected</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">DOMAINS</span><span class="p">:</span>
         <span class="n">pool</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vignettes</span> <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s2">"domain"</span><span class="p">]</span> <span class="o">==</span> <span class="n">domain</span><span class="p">]</span>
         <span class="n">by_sev</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pool</span><span class="p">:</span>
             <span class="n">by_sev</span><span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="s2">"severity"</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-        
+
         <span class="c1"># Sample according to weights</span>
         <span class="n">n_high</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">per_domain</span> <span class="o">*</span> <span class="n">severity_weights</span><span class="p">[</span><span class="s2">"high"</span><span class="p">])</span>
         <span class="n">n_med</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">per_domain</span> <span class="o">*</span> <span class="n">severity_weights</span><span class="p">[</span><span class="s2">"medium"</span><span class="p">])</span>
         <span class="n">n_low</span> <span class="o">=</span> <span class="n">per_domain</span> <span class="o">-</span> <span class="n">n_high</span> <span class="o">-</span> <span class="n">n_med</span>
-        
+
         <span class="n">domain_selection</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">sev</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"high"</span><span class="p">,</span> <span class="n">n_high</span><span class="p">),</span> <span class="p">(</span><span class="s2">"medium"</span><span class="p">,</span> <span class="n">n_med</span><span class="p">),</span> <span class="p">(</span><span class="s2">"low"</span><span class="p">,</span> <span class="n">n_low</span><span class="p">)]:</span>
             <span class="n">candidates</span> <span class="o">=</span> <span class="n">by_sev</span><span class="p">[</span><span class="n">sev</span><span class="p">][:]</span>
             <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span>
             <span class="n">domain_selection</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">candidates</span><span class="p">[:</span><span class="n">n</span><span class="p">])</span>
-        
+
         <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">domain_selection</span><span class="p">)</span>
         <span class="n">selected</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">domain_selection</span><span class="p">)</span>
-    
+
     <span class="c1"># Top up remainder with high severity</span>
     <span class="k">if</span> <span class="n">rem</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">high_pool</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vignettes</span> <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s2">"severity"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"high"</span> 
+        <span class="n">high_pool</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vignettes</span> <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s2">"severity"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"high"</span>
                      <span class="ow">and</span> <span class="n">v</span><span class="p">[</span><span class="s2">"vignette_id"</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="n">s</span><span class="p">[</span><span class="s2">"vignette_id"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">selected</span><span class="p">}]</span>
         <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">high_pool</span><span class="p">)</span>
         <span class="n">selected</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">high_pool</span><span class="p">[:</span><span class="n">rem</span><span class="p">])</span>
-    
+
     <span class="c1"># Deduplicate</span>
     <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">unique</span> <span class="o">=</span> <span class="p">[]</span>
@@ -8056,7 +8056,7 @@ Script 00 complete. You can now run Script 01 (generator) when ready.
         <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s2">"vignette_id"</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
             <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">"vignette_id"</span><span class="p">])</span>
             <span class="n">unique</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">unique</span><span class="p">[:</span><span class="n">target_n</span><span class="p">]</span>
 
 
@@ -8068,25 +8068,25 @@ Script 00 complete. You can now run Script 01 (generator) when ready.
 <span class="sd">          Falls back to severity-weighted if selection file not found.</span>
 <span class="sd">    """</span>
     <span class="n">selection_file</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">/</span> <span class="s2">"advanced_validation"</span> <span class="o">/</span> <span class="s2">"stratified_active_learning_selection.csv"</span>
-    
+
     <span class="k">if</span> <span class="ow">not</span> <span class="n">selection_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] WARNING: Active learning selection not found at </span><span class="si">{</span><span class="n">selection_file</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Falling back to severity-weighted sampling. Run Script 05 first!"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">sample_severity_weighted</span><span class="p">(</span><span class="n">vignettes</span><span class="p">,</span> <span class="n">target_n</span><span class="p">)</span>
-    
+
     <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
     <span class="n">selected_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">selection_file</span><span class="p">)[</span><span class="s2">"vignette_id"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-    
+
     <span class="n">selected</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vignettes</span> <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s2">"vignette_id"</span><span class="p">]</span> <span class="ow">in</span> <span class="n">selected_ids</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span><span class="si">}</span><span class="s2"> vignettes from active learning selection"</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">selected</span><span class="p">[:</span><span class="n">target_n</span><span class="p">]</span>
 
 
 <span class="c1"># ---------- Select vignettes based on strategy ----------</span>
 <span class="k">if</span> <span class="n">STAGE_CONFIG</span><span class="p">[</span><span class="s2">"sampling_strategy"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"severity_weighted"</span><span class="p">:</span>
     <span class="n">selected</span> <span class="o">=</span> <span class="n">sample_severity_weighted</span><span class="p">(</span>
-        <span class="n">all_vignettes</span><span class="p">,</span> 
+        <span class="n">all_vignettes</span><span class="p">,</span>
         <span class="n">STAGE_CONFIG</span><span class="p">[</span><span class="s2">"target_n"</span><span class="p">],</span>
         <span class="n">STAGE_CONFIG</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"severity_weights"</span><span class="p">)</span>
     <span class="p">)</span>
@@ -8115,10 +8115,10 @@ Script 00 complete. You can now run Script 01 (generator) when ready.
         <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"age"</span><span class="p">,</span> <span class="s2">"99"</span><span class="p">))</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
-    
+
     <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"oncology_diagnosis"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
     <span class="n">onco</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"oncology_flag"</span><span class="p">))</span>
-    
+
     <span class="k">if</span> <span class="n">onco</span> <span class="ow">and</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">dx</span> <span class="ow">and</span> <span class="n">dx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">PEDIATRIC_OK</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="mi">0</span>
@@ -8127,14 +8127,14 @@ Script 00 complete. You can now run Script 01 (generator) when ready.
 <span class="w">    </span><span class="sd">"""Flag US minors with family notification language (HIPAA concern)"""</span>
     <span class="n">txt</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"scenario_text"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
     <span class="n">cv</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"clinical_vars"</span><span class="p">,</span> <span class="p">{})</span>
-    
+
     <span class="k">try</span><span class="p">:</span>
         <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"age"</span><span class="p">,</span> <span class="s2">"99"</span><span class="p">))</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
-    
+
     <span class="n">country</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"country"</span><span class="p">,</span> <span class="s2">"neutral"</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">country</span> <span class="o">==</span> <span class="s2">"us"</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="p">(</span><span class="s2">"notified"</span> <span class="ow">in</span> <span class="n">txt</span> <span class="ow">and</span> <span class="s2">"family"</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="mi">0</span>
@@ -8149,7 +8149,7 @@ Script 00 complete. You can now run Script 01 (generator) when ready.
     <span class="s2">"scenario_text"</span>
 <span class="p">]</span>
 <span class="n">FIELD_RATER</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"rater_id"</span><span class="p">,</span> <span class="s2">"realism_1to5"</span><span class="p">,</span> <span class="s2">"severity_fit_1to5"</span><span class="p">,</span> 
+    <span class="s2">"rater_id"</span><span class="p">,</span> <span class="s2">"realism_1to5"</span><span class="p">,</span> <span class="s2">"severity_fit_1to5"</span><span class="p">,</span>
     <span class="s2">"appropriateness_1to5"</span><span class="p">,</span> <span class="s2">"clinician_notes"</span>
 <span class="p">]</span>
 <span class="n">FIELD_ITEMS</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"rater_req__</span><span class="si">{</span><span class="n">iid</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">iid</span> <span class="ow">in</span> <span class="n">SMS_IDS</span><span class="p">]</span>
@@ -8165,7 +8165,7 @@ Script 00 complete. You can now run Script 01 (generator) when ready.
 <span class="k">with</span> <span class="n">out_csv</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
     <span class="n">w</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
-    
+
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">selected</span><span class="p">:</span>
         <span class="n">cv</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"clinical_vars"</span><span class="p">,</span> <span class="p">{})</span>
         <span class="n">row</span> <span class="o">=</span> <span class="p">{</span>
@@ -8185,17 +8185,17 @@ Script 00 complete. You can now run Script 01 (generator) when ready.
             <span class="s2">"appropriateness_1to5"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
             <span class="s2">"clinician_notes"</span><span class="p">:</span> <span class="s2">""</span>
         <span class="p">}</span>
-        
+
         <span class="c1"># Empty item booleans for rater to fill</span>
         <span class="k">for</span> <span class="n">iid</span> <span class="ow">in</span> <span class="n">SMS_IDS</span><span class="p">:</span>
             <span class="n">row</span><span class="p">[</span><span class="sa">f</span><span class="s2">"rater_req__</span><span class="si">{</span><span class="n">iid</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
-        
+
         <span class="c1"># Auto-QA flags</span>
         <span class="n">row</span><span class="p">[</span><span class="s2">"auto_flag__grammar_is_are"</span><span class="p">]</span> <span class="o">=</span> <span class="n">flag_grammar</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">"scenario_text"</span><span class="p">])</span>
         <span class="n">row</span><span class="p">[</span><span class="s2">"auto_flag__height_phrase"</span><span class="p">]</span> <span class="o">=</span> <span class="n">flag_height_phrase</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">"scenario_text"</span><span class="p">])</span>
         <span class="n">row</span><span class="p">[</span><span class="s2">"auto_flag__age_diagnosis"</span><span class="p">]</span> <span class="o">=</span> <span class="n">flag_age_dx_mismatch</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
         <span class="n">row</span><span class="p">[</span><span class="s2">"auto_flag__us_minor_cue"</span><span class="p">]</span> <span class="o">=</span> <span class="n">flag_us_minor_cue</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-        
+
         <span class="n">w</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
 <span class="c1"># ---------- Summary ----------</span>
@@ -8624,11 +8624,11 @@ Language mix: {'ur': 34, 'en': 26}
     <span class="n">pvt</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"vignette_id"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"rater_id"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"rater_bool"</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
     <span class="n">vals</span><span class="o">=</span><span class="p">[];</span> <span class="n">ns</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">r1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pvt</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="n">r2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pvt</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="n">r1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pvt</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="n">r2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pvt</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="k">continue</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">pvt</span><span class="p">[</span><span class="n">r1</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">();</span> <span class="n">b</span> <span class="o">=</span> <span class="n">pvt</span><span class="p">[</span><span class="n">r2</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
             <span class="k">continue</span>
         <span class="n">vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cohen_kappa</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
         <span class="n">ns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">))</span>
@@ -9397,7 +9397,7 @@ Saved per-item agreement → D:\个人文件夹\Sanwal\LLM\tables\T2_per_item_ag
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">_is_item_col</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
             <span class="c1"># ensure no suffix</span>
-            <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"_x"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"_y"</span><span class="p">):</span> 
+            <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"_x"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"_y"</span><span class="p">):</span>
                 <span class="k">continue</span>
             <span class="c1"># keep canonical</span>
             <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"__"</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
@@ -9756,7 +9756,7 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
 <span class="c1"># ============ Utilities ============</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">STAMP</span><span class="p">():</span> <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S"</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">in_jupyter</span><span class="p">():</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">in_jupyter</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">"ipykernel"</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span> <span class="ow">or</span> <span class="s2">"JPY_PARENT_PID"</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">select_root</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
@@ -9766,13 +9766,13 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
         <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"SENTRY_ROOT"</span><span class="p">])</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Using SENTRY_ROOT env var: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">p</span>
-    
+
     <span class="c1"># Priority 2: Hardcoded path (from your scripts)</span>
     <span class="n">hardcoded</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">r</span><span class="s2">"D:\个人文件夹\Sanwal\LLM"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">hardcoded</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Using hardcoded path: </span><span class="si">{</span><span class="n">hardcoded</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">hardcoded</span>
-    
+
     <span class="c1"># Priority 3: CLI argument</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">in_jupyter</span><span class="p">():</span>
         <span class="n">argv</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">a</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)]</span>
@@ -9780,7 +9780,7 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
             <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Using CLI path: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">p</span>
-    
+
     <span class="c1"># Priority 4: Current working directory</span>
     <span class="n">cwd</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Using current directory: </span><span class="si">{</span><span class="n">cwd</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -9913,7 +9913,7 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
         <span class="n">expected_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"expected__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">adj_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"adj__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">final_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"final__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span>
-        
+
         <span class="k">if</span> <span class="n">expected_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">VIG_DF</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">adj_col</span> <span class="ow">in</span> <span class="n">VIG_DF</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
                 <span class="n">VIG_DF</span><span class="p">[</span><span class="n">expected_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">VIG_DF</span><span class="p">[</span><span class="n">adj_col</span><span class="p">]</span>
@@ -9933,11 +9933,11 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
 <span class="w">    </span><span class="sd">"""Call Claude API for SMS item labeling"""</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">LLM_ENABLED</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">item</span><span class="p">:</span> <span class="kc">False</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">SMS_ITEMS</span><span class="p">})</span>  <span class="c1"># Dummy response</span>
-    
+
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span><span class="w"> </span><span class="nn">anthropic</span>
         <span class="n">client</span> <span class="o">=</span> <span class="n">anthropic</span><span class="o">.</span><span class="n">Anthropic</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">ANTHROPIC_API_KEY</span><span class="p">)</span>
-        
+
         <span class="n">message</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <span class="n">model</span><span class="o">=</span><span class="s2">"claude-sonnet-4-20250514"</span><span class="p">,</span>
             <span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">,</span>
@@ -9953,13 +9953,13 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
     <span class="n">scenario</span> <span class="o">=</span> <span class="n">vignette</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"scenario_text"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
     <span class="n">domain</span> <span class="o">=</span> <span class="n">vignette</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"domain"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
     <span class="n">severity</span> <span class="o">=</span> <span class="n">vignette</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"severity"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
-    
+
     <span class="c1"># Build SMS item descriptions</span>
     <span class="n">item_desc</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
         <span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'item_id'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'description'</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="s1">'REQUIRED'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span><span class="o">==</span><span class="s1">'required'</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'FORBIDDEN'</span><span class="si">}</span><span class="s2">)"</span>
         <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">SMS_DF</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()</span>
     <span class="p">])</span>
-    
+
     <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""You are a clinical expert evaluating mental health crisis response.</span>
 
 <span class="s2">VIGNETTE:</span>
@@ -9981,7 +9981,7 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
 <span class="s2">DO NOT include any explanation. Output ONLY the JSON object."""</span>
 
     <span class="n">response_text</span> <span class="o">=</span> <span class="n">call_claude_api</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
-    
+
     <span class="c1"># Parse JSON response</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Strip markdown code blocks if present</span>
@@ -9989,7 +9989,7 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
         <span class="k">if</span> <span class="n">response_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"```"</span><span class="p">):</span>
             <span class="n">lines</span> <span class="o">=</span> <span class="n">response_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">response_text</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">l</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"```"</span><span class="p">)])</span>
-        
+
         <span class="n">labels</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response_text</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span><span class="n">item</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">SMS_ITEMS</span><span class="p">}</span>
     <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
@@ -10008,20 +10008,20 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
 <span class="k">if</span> <span class="n">LLM_ENABLED</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Running LLM-assisted validation on sample..."</span><span class="p">)</span>
     <span class="n">sample_vig</span> <span class="o">=</span> <span class="n">stratified_sample</span><span class="p">(</span><span class="n">VIG_DF</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>  <span class="c1"># Start with 30 vignettes</span>
-    
+
     <span class="n">llm_results</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sample_vig</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Processing </span><span class="si">{</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_vig</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'vignette_id'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">vignette</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
         <span class="n">llm_labels</span> <span class="o">=</span> <span class="n">llm_label_vignette</span><span class="p">(</span><span class="n">vignette</span><span class="p">)</span>
-        
+
         <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">"vignette_id"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"vignette_id"</span><span class="p">],</span>
             <span class="s2">"domain"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"domain"</span><span class="p">,</span> <span class="s2">""</span><span class="p">),</span>
             <span class="s2">"severity"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"severity"</span><span class="p">,</span> <span class="s2">""</span><span class="p">),</span>
             <span class="s2">"language"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"language"</span><span class="p">,</span> <span class="s2">""</span><span class="p">),</span>
         <span class="p">}</span>
-        
+
         <span class="c1"># Compare LLM labels vs expected ground truth</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">SMS_ITEMS</span><span class="p">:</span>
             <span class="n">expected</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"expected__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
@@ -10029,29 +10029,29 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
             <span class="n">result</span><span class="p">[</span><span class="sa">f</span><span class="s2">"llm_pred__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="n">predicted</span>
             <span class="n">result</span><span class="p">[</span><span class="sa">f</span><span class="s2">"expected__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="n">expected</span>
             <span class="n">result</span><span class="p">[</span><span class="sa">f</span><span class="s2">"match__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">expected</span><span class="p">)</span>
-        
+
         <span class="n">llm_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Rate limiting</span>
-    
+
     <span class="n">LLM_DF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">llm_results</span><span class="p">)</span>
-    
+
     <span class="c1"># Compute accuracy per item</span>
     <span class="n">llm_accuracy</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">SMS_ITEMS</span><span class="p">:</span>
         <span class="n">match_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"match__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">pred_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"llm_pred__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">exp_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"expected__</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span>
-        
+
         <span class="n">acc</span> <span class="o">=</span> <span class="n">LLM_DF</span><span class="p">[</span><span class="n">match_col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-        
+
         <span class="n">true_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">LLM_DF</span><span class="p">[</span><span class="n">pred_col</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">LLM_DF</span><span class="p">[</span><span class="n">exp_col</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="n">pred_pos</span> <span class="o">=</span> <span class="n">LLM_DF</span><span class="p">[</span><span class="n">pred_col</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="n">actual_pos</span> <span class="o">=</span> <span class="n">LLM_DF</span><span class="p">[</span><span class="n">exp_col</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        
+
         <span class="n">precision</span> <span class="o">=</span> <span class="n">true_pos</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">pred_pos</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">recall</span> <span class="o">=</span> <span class="n">true_pos</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">actual_pos</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">f1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">precision</span> <span class="o">*</span> <span class="n">recall</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">precision</span> <span class="o">+</span> <span class="n">recall</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>
-        
+
         <span class="n">llm_accuracy</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
             <span class="s2">"item_id"</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
             <span class="s2">"accuracy"</span><span class="p">:</span> <span class="n">acc</span><span class="p">,</span>
@@ -10060,16 +10060,16 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
             <span class="s2">"f1"</span><span class="p">:</span> <span class="n">f1</span><span class="p">,</span>
             <span class="s2">"category"</span><span class="p">:</span> <span class="n">SMS_DF</span><span class="p">[</span><span class="n">SMS_DF</span><span class="p">[</span><span class="s2">"item_id"</span><span class="p">]</span><span class="o">==</span><span class="n">item</span><span class="p">][</span><span class="s2">"category"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="p">})</span>
-    
+
     <span class="n">LLM_ACC_DF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">llm_accuracy</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"f1"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    
+
     <span class="c1"># Save results</span>
     <span class="n">llm_out</span> <span class="o">=</span> <span class="n">DIRS</span><span class="p">[</span><span class="s2">"advanced"</span><span class="p">]</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"llm_assisted_validation_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span><span class="si">}</span><span class="s2">.csv"</span>
     <span class="n">LLM_DF</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">llm_out</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    
+
     <span class="n">llm_acc_out</span> <span class="o">=</span> <span class="n">DIRS</span><span class="p">[</span><span class="s2">"advanced"</span><span class="p">]</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"llm_item_accuracy_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span><span class="si">}</span><span class="s2">.csv"</span>
     <span class="n">LLM_ACC_DF</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">llm_acc_out</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    
+
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] LLM validation results → </span><span class="si">{</span><span class="n">llm_out</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] LLM accuracy by item → </span><span class="si">{</span><span class="n">llm_acc_out</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Overall LLM accuracy: </span><span class="si">{</span><span class="n">LLM_DF</span><span class="p">[[</span><span class="sa">f</span><span class="s1">'match__</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">SMS_ITEMS</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -10089,27 +10089,27 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
 <span class="k">def</span><span class="w"> </span><span class="nf">compute_feature_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Extract features for uncertainty estimation"""</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    
+
     <span class="c1"># Domain one-hot encoding</span>
     <span class="k">if</span> <span class="s2">"domain"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">"domain"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">domain</span><span class="p">):</span>
                 <span class="n">features</span><span class="p">[</span><span class="sa">f</span><span class="s2">"domain_</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"domain"</span><span class="p">]</span> <span class="o">==</span> <span class="n">domain</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-    
+
     <span class="c1"># Severity ordinal encoding</span>
     <span class="k">if</span> <span class="s2">"severity"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">sev_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"low"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"medium"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"high"</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
         <span class="n">features</span><span class="p">[</span><span class="s2">"severity_ord"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"severity"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sev_map</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    
+
     <span class="c1"># Language binary</span>
     <span class="k">if</span> <span class="s2">"language"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">features</span><span class="p">[</span><span class="s2">"lang_en"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"language"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"en"</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-    
+
     <span class="c1"># Text-based features</span>
     <span class="k">if</span> <span class="s2">"scenario_text"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">features</span><span class="p">[</span><span class="s2">"text_length"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"scenario_text"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
         <span class="n">features</span><span class="p">[</span><span class="s2">"text_words"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"scenario_text"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
-    
+
     <span class="c1"># Clinical variables (if available)</span>
     <span class="k">if</span> <span class="s2">"clinical_vars"</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">features</span><span class="p">[</span><span class="s2">"has_oncology"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"clinical_vars"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
@@ -10118,18 +10118,18 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
         <span class="n">features</span><span class="p">[</span><span class="s2">"country_cue"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"clinical_vars"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"country"</span><span class="p">,</span> <span class="s2">"neutral"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"neutral"</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="p">)</span>
-    
+
     <span class="c1"># Ground truth label counts (proxy for complexity)</span>
     <span class="n">expected_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"expected__"</span><span class="p">)]</span>
     <span class="k">if</span> <span class="n">expected_cols</span><span class="p">:</span>
         <span class="n">features</span><span class="p">[</span><span class="s2">"n_required_items"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">expected_cols</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    
+
     <span class="c1"># Select numeric features only</span>
-    <span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">features</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> 
-                    <span class="p">[</span><span class="s2">"vignette_id"</span><span class="p">,</span> <span class="s2">"scenario_text"</span><span class="p">,</span> <span class="s2">"domain"</span><span class="p">,</span> <span class="s2">"severity"</span><span class="p">,</span> <span class="s2">"language"</span><span class="p">,</span> 
+    <span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">features</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span>
+                    <span class="p">[</span><span class="s2">"vignette_id"</span><span class="p">,</span> <span class="s2">"scenario_text"</span><span class="p">,</span> <span class="s2">"domain"</span><span class="p">,</span> <span class="s2">"severity"</span><span class="p">,</span> <span class="s2">"language"</span><span class="p">,</span>
                      <span class="s2">"ground_truth_sms"</span><span class="p">,</span> <span class="s2">"clinical_vars"</span><span class="p">,</span> <span class="s2">"labels"</span><span class="p">]]</span>
     <span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">feature_cols</span> <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>
-    
+
     <span class="k">return</span> <span class="n">features</span><span class="p">[[</span><span class="s2">"vignette_id"</span><span class="p">]</span> <span class="o">+</span> <span class="n">feature_cols</span><span class="p">]</span>
 
 <span class="c1"># Build feature matrix</span>
@@ -10152,16 +10152,16 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_BOOTSTRAP_UNCERTAINTY</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Bootstrap iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">N_BOOTSTRAP_UNCERTAINTY</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">)</span>
-    
+
     <span class="c1"># Resample with replacement</span>
     <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">X_boot</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
     <span class="n">y_boot</span> <span class="o">=</span> <span class="n">y_binary</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
-    
+
     <span class="c1"># Train simple model</span>
     <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_boot</span><span class="p">,</span> <span class="n">y_boot</span><span class="p">)</span>
-    
+
     <span class="c1"># Predict on full set</span>
     <span class="n">pred_proba</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Probability of "high risk"</span>
     <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred_proba</span><span class="p">)</span>
@@ -10244,54 +10244,54 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
 
 <span class="k">if</span> <span class="n">model_outputs</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model_outputs</span><span class="p">)</span><span class="si">}</span><span class="s2"> model output files. Analyzing calibration..."</span><span class="p">)</span>
-    
+
     <span class="n">calibration_results</span> <span class="o">=</span> <span class="p">[]</span>
-    
+
     <span class="k">for</span> <span class="n">model_file</span> <span class="ow">in</span> <span class="n">model_outputs</span><span class="p">[:</span><span class="mi">3</span><span class="p">]:</span>  <span class="c1"># Analyze first 3 models</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Processing </span><span class="si">{</span><span class="n">model_file</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
-        
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">model_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
-            
+
             <span class="c1"># Identify probability columns (assume format: prob_{item_id})</span>
             <span class="n">prob_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">model_df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"prob_"</span><span class="p">)]</span>
-            
+
             <span class="k">if</span> <span class="ow">not</span> <span class="n">prob_cols</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] WARNING: No probability columns found in </span><span class="si">{</span><span class="n">model_file</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
                 <span class="k">continue</span>
-            
+
             <span class="c1"># For each item with probabilities</span>
             <span class="k">for</span> <span class="n">prob_col</span> <span class="ow">in</span> <span class="n">prob_cols</span><span class="p">:</span>
                 <span class="n">item_name</span> <span class="o">=</span> <span class="n">prob_col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"prob_"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
                 <span class="n">pred_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"pred_</span><span class="si">{</span><span class="n">item_name</span><span class="si">}</span><span class="s2">"</span>
                 <span class="n">true_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"expected__</span><span class="si">{</span><span class="n">item_name</span><span class="si">}</span><span class="s2">"</span>
-                
+
                 <span class="k">if</span> <span class="n">pred_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model_df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="n">true_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
                     <span class="k">continue</span>
-                
+
                 <span class="c1"># Filter valid rows</span>
                 <span class="n">valid</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[[</span><span class="n">prob_col</span><span class="p">,</span> <span class="n">pred_col</span><span class="p">,</span> <span class="n">true_col</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
                     <span class="k">continue</span>
-                
+
                 <span class="n">y_true</span> <span class="o">=</span> <span class="n">valid</span><span class="p">[</span><span class="n">true_col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
                 <span class="n">y_prob</span> <span class="o">=</span> <span class="n">valid</span><span class="p">[</span><span class="n">prob_col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
                 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">valid</span><span class="p">[</span><span class="n">pred_col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-                
+
                 <span class="c1"># Compute calibration metrics</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">brier</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
                     <span class="n">logloss</span> <span class="o">=</span> <span class="n">log_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
-                    
+
                     <span class="c1"># Calibration curve</span>
                     <span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">CALIBRATION_BINS</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">'uniform'</span><span class="p">)</span>
-                    
+
                     <span class="c1"># Expected Calibration Error (ECE)</span>
                     <span class="n">ece</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">prob_true</span> <span class="o">-</span> <span class="n">prob_pred</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-                    
+
                     <span class="c1"># Maximum Calibration Error (MCE)</span>
                     <span class="n">mce</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">prob_true</span> <span class="o">-</span> <span class="n">prob_pred</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-                    
+
                     <span class="n">calibration_results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                         <span class="s2">"model"</span><span class="p">:</span> <span class="n">model_file</span><span class="o">.</span><span class="n">stem</span><span class="p">,</span>
                         <span class="s2">"item_id"</span><span class="p">:</span> <span class="n">item_name</span><span class="p">,</span>
@@ -10303,23 +10303,23 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
                         <span class="s2">"prob_true"</span><span class="p">:</span> <span class="n">prob_true</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
                         <span class="s2">"prob_pred"</span><span class="p">:</span> <span class="n">prob_pred</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
                     <span class="p">})</span>
-                    
+
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] WARNING: Calibration failed for </span><span class="si">{</span><span class="n">item_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
                     <span class="k">continue</span>
-        
+
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] WARNING: Failed to process </span><span class="si">{</span><span class="n">model_file</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">continue</span>
-    
+
     <span class="k">if</span> <span class="n">calibration_results</span><span class="p">:</span>
         <span class="n">CALIB_DF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">calibration_results</span><span class="p">)</span>
-        
+
         <span class="c1"># Save calibration metrics</span>
         <span class="n">calib_out</span> <span class="o">=</span> <span class="n">DIRS</span><span class="p">[</span><span class="s2">"advanced"</span><span class="p">]</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"calibration_metrics_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span><span class="si">}</span><span class="s2">.csv"</span>
         <span class="n">CALIB_DF</span><span class="p">[[</span><span class="s2">"model"</span><span class="p">,</span> <span class="s2">"item_id"</span><span class="p">,</span> <span class="s2">"n_samples"</span><span class="p">,</span> <span class="s2">"brier_score"</span><span class="p">,</span> <span class="s2">"log_loss"</span><span class="p">,</span> <span class="s2">"ece"</span><span class="p">,</span> <span class="s2">"mce"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">calib_out</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Calibration metrics → </span><span class="si">{</span><span class="n">calib_out</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        
+
         <span class="c1"># Summary statistics</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"CALIBRATION SUMMARY"</span><span class="p">)</span>
@@ -10331,18 +10331,18 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Log Loss: </span><span class="si">{</span><span class="n">CALIB_DF</span><span class="p">[</span><span class="s1">'log_loss'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ECE: </span><span class="si">{</span><span class="n">CALIB_DF</span><span class="p">[</span><span class="s1">'ece'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  MCE: </span><span class="si">{</span><span class="n">CALIB_DF</span><span class="p">[</span><span class="s1">'mce'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        
+
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Worst calibrated items (by ECE):"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">CALIB_DF</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"ece"</span><span class="p">)[[</span><span class="s2">"model"</span><span class="p">,</span> <span class="s2">"item_id"</span><span class="p">,</span> <span class="s2">"ece"</span><span class="p">,</span> <span class="s2">"brier_score"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-        
+
         <span class="c1"># Generate calibration plots</span>
         <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
         <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">"Model Calibration Analysis"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
-        
+
         <span class="c1"># Plot 1: Calibration curves (top items)</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">CALIB_DF</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"n_samples"</span><span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"prob_pred"</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">"prob_true"</span><span class="p">],</span> <span class="s1">'o-'</span><span class="p">,</span> 
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"prob_pred"</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">"prob_true"</span><span class="p">],</span> <span class="s1">'o-'</span><span class="p">,</span>
                    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'item_id'</span><span class="p">][:</span><span class="mi">20</span><span class="p">]</span><span class="si">}</span><span class="s2"> (ECE=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'ece'</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'k--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Perfect calibration'</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Predicted Probability"</span><span class="p">)</span>
@@ -10350,18 +10350,18 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
         <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Calibration Curves (Top 5 Items)"</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-        
+
         <span class="c1"># Plot 2: ECE distribution</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">CALIB_DF</span><span class="p">[</span><span class="s2">"ece"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">CALIB_DF</span><span class="p">[</span><span class="s2">"ece"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> 
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">CALIB_DF</span><span class="p">[</span><span class="s2">"ece"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span>
                   <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">'Mean ECE = </span><span class="si">{</span><span class="n">CALIB_DF</span><span class="p">[</span><span class="s2">"ece"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Expected Calibration Error (ECE)"</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Frequency"</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"ECE Distribution Across Items"</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-        
+
         <span class="c1"># Plot 3: Brier Score by category</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
         <span class="n">calib_cat</span> <span class="o">=</span> <span class="n">CALIB_DF</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">SMS_DF</span><span class="p">[[</span><span class="s2">"item_id"</span><span class="p">,</span> <span class="s2">"category"</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s2">"item_id"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
@@ -10374,7 +10374,7 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
             <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">"No category data available"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
-        
+
         <span class="c1"># Plot 4: ECE vs Brier Score correlation</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">CALIB_DF</span><span class="p">[</span><span class="s2">"brier_score"</span><span class="p">],</span> <span class="n">CALIB_DF</span><span class="p">[</span><span class="s2">"ece"</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
@@ -10382,18 +10382,18 @@ C:\Users\sanwal\AppData\Local\Temp\4\ipykernel_20804\325532483.py:336: UserWarni
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"ECE"</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Calibration Metrics Correlation"</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-        
+
         <span class="c1"># Add correlation coefficient</span>
         <span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">CALIB_DF</span><span class="p">[</span><span class="s2">"brier_score"</span><span class="p">],</span> <span class="n">CALIB_DF</span><span class="p">[</span><span class="s2">"ece"</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'ρ = </span><span class="si">{</span><span class="n">corr</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> 
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'ρ = </span><span class="si">{</span><span class="n">corr</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">'top'</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">'round'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">))</span>
-        
+
         <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
         <span class="n">calib_plot_out</span> <span class="o">=</span> <span class="n">DIRS</span><span class="p">[</span><span class="s2">"figures"</span><span class="p">]</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"calibration_analysis_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span><span class="si">}</span><span class="s2">.png"</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">calib_plot_out</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">'tight'</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] Calibration plots → </span><span class="si">{</span><span class="n">calib_plot_out</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        
+
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">STAMP</span><span class="p">()</span><span class="si">}</span><span class="s2">] No valid calibration data found in model outputs."</span><span class="p">)</span>
         <span class="n">CALIB_DF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -10660,7 +10660,7 @@ KEY RECOMMENDATIONS:
 <span class="n">table2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">'Metric'</span><span class="p">:</span> <span class="p">[</span>
         <span class="s1">'Mean Uncertainty'</span><span class="p">,</span>
-        <span class="s1">'SD Uncertainty'</span><span class="p">,</span> 
+        <span class="s1">'SD Uncertainty'</span><span class="p">,</span>
         <span class="s1">'Domain×Severity Coverage'</span><span class="p">,</span>
         <span class="s1">'Domains Covered'</span><span class="p">,</span>
         <span class="s1">'Missing Domains'</span><span class="p">,</span>
@@ -10709,20 +10709,20 @@ KEY RECOMMENDATIONS:
 <span class="n">coverage_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">domains_all</span><span class="p">:</span>
     <span class="n">row</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Domain'</span><span class="p">:</span> <span class="n">domain</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()}</span>
-    
+
     <span class="k">for</span> <span class="n">sev</span> <span class="ow">in</span> <span class="n">severities</span><span class="p">:</span>
         <span class="c1"># Pure AL</span>
         <span class="n">pure_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pure_al</span><span class="p">[(</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">==</span><span class="n">sev</span><span class="p">)])</span>
         <span class="n">strat_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">[(</span><span class="n">selection</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">selection</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">==</span><span class="n">sev</span><span class="p">)])</span>
-        
+
         <span class="n">row</span><span class="p">[</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">sev</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Pure: </span><span class="si">{</span><span class="n">pure_count</span><span class="si">}</span><span class="s2">, Strat: </span><span class="si">{</span><span class="n">strat_count</span><span class="si">}</span><span class="s2">"</span>
-    
+
     <span class="n">pure_total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pure_al</span><span class="p">[</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">])</span>
     <span class="n">strat_total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">[</span><span class="n">selection</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">])</span>
     <span class="n">row</span><span class="p">[</span><span class="s1">'Pure AL Total'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pure_total</span>
     <span class="n">row</span><span class="p">[</span><span class="s1">'Stratified Total'</span><span class="p">]</span> <span class="o">=</span> <span class="n">strat_total</span>
     <span class="n">row</span><span class="p">[</span><span class="s1">'Coverage Gain'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"+</span><span class="si">{</span><span class="n">strat_total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pure_total</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">strat_total</span> <span class="o">&gt;</span> <span class="n">pure_total</span> <span class="k">else</span> <span class="s2">"0"</span>
-    
+
     <span class="n">coverage_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
 <span class="n">table3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">coverage_data</span><span class="p">)</span>
@@ -10736,8 +10736,8 @@ KEY RECOMMENDATIONS:
 
 <span class="c1"># Compare Pure AL vs Stratified</span>
 <span class="n">stat_pure_strat</span><span class="p">,</span> <span class="n">pval_pure_strat</span> <span class="o">=</span> <span class="n">mannwhitneyu</span><span class="p">(</span>
-    <span class="n">pure_al</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">],</span> 
-    <span class="n">selection</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">],</span> 
+    <span class="n">pure_al</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">],</span>
+    <span class="n">selection</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">],</span>
     <span class="n">alternative</span><span class="o">=</span><span class="s1">'two-sided'</span>
 <span class="p">)</span>
 
@@ -10803,11 +10803,11 @@ KEY RECOMMENDATIONS:
 <span class="n">matrix_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">domains_all</span><span class="p">:</span>
     <span class="n">row</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Domain'</span><span class="p">:</span> <span class="n">domain</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()}</span>
-    
+
     <span class="k">for</span> <span class="n">sev</span> <span class="ow">in</span> <span class="n">severities</span><span class="p">:</span>
         <span class="n">pure_has</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pure_al</span><span class="p">[(</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">==</span><span class="n">sev</span><span class="p">)])</span> <span class="o">&gt;</span> <span class="mi">0</span>
         <span class="n">strat_has</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">[(</span><span class="n">selection</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">selection</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">==</span><span class="n">sev</span><span class="p">)])</span> <span class="o">&gt;</span> <span class="mi">0</span>
-        
+
         <span class="k">if</span> <span class="n">strat_has</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pure_has</span><span class="p">:</span>
             <span class="n">row</span><span class="p">[</span><span class="n">sev</span><span class="o">.</span><span class="n">title</span><span class="p">()]</span> <span class="o">=</span> <span class="s2">"✓ (Gap Filled)"</span>
         <span class="k">elif</span> <span class="n">strat_has</span> <span class="ow">and</span> <span class="n">pure_has</span><span class="p">:</span>
@@ -10816,14 +10816,14 @@ KEY RECOMMENDATIONS:
             <span class="n">row</span><span class="p">[</span><span class="n">sev</span><span class="o">.</span><span class="n">title</span><span class="p">()]</span> <span class="o">=</span> <span class="s2">"✗ (Neither)"</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">row</span><span class="p">[</span><span class="n">sev</span><span class="o">.</span><span class="n">title</span><span class="p">()]</span> <span class="o">=</span> <span class="s2">"Pure Only"</span>
-    
+
     <span class="n">pure_cov</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">pure_al</span><span class="p">[(</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">==</span><span class="n">s</span><span class="p">)])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">severities</span><span class="p">])</span>
     <span class="n">strat_cov</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">[(</span><span class="n">selection</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">selection</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">==</span><span class="n">s</span><span class="p">)])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">severities</span><span class="p">])</span>
-    
+
     <span class="n">row</span><span class="p">[</span><span class="s1">'Pure AL Coverage'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pure_cov</span><span class="si">}</span><span class="s2">/3"</span>
     <span class="n">row</span><span class="p">[</span><span class="s1">'Stratified Coverage'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">strat_cov</span><span class="si">}</span><span class="s2">/3"</span>
     <span class="n">row</span><span class="p">[</span><span class="s1">'Status'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Complete"</span> <span class="k">if</span> <span class="n">strat_cov</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">else</span> <span class="s2">"Incomplete"</span>
-    
+
     <span class="n">matrix_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
 <span class="n">tableS1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">matrix_data</span><span class="p">)</span>
@@ -10839,7 +10839,7 @@ KEY RECOMMENDATIONS:
     <span class="n">non_onc</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">sev_data</span><span class="p">[</span><span class="s1">'oncology'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="n">onc</span> <span class="o">=</span> <span class="n">sev_data</span><span class="p">[</span><span class="s1">'oncology'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sev_data</span><span class="p">)</span>
-    
+
     <span class="n">onc_data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
         <span class="s1">'Severity'</span><span class="p">:</span> <span class="n">sev</span><span class="o">.</span><span class="n">title</span><span class="p">(),</span>
         <span class="s1">'Non-Oncology'</span><span class="p">:</span> <span class="n">non_onc</span><span class="p">,</span>
@@ -10900,7 +10900,7 @@ KEY RECOMMENDATIONS:
 <span class="n">domain_stats</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">domains_all</span><span class="p">:</span>
     <span class="n">strat_domain</span> <span class="o">=</span> <span class="n">selection</span><span class="p">[</span><span class="n">selection</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">]</span>
-    
+
     <span class="n">domain_stats</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
         <span class="s1">'Domain'</span><span class="p">:</span> <span class="n">domain</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(),</span>
         <span class="s1">'N'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">strat_domain</span><span class="p">),</span>
@@ -10923,7 +10923,7 @@ KEY RECOMMENDATIONS:
 <span class="n">severity_stats</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">sev</span> <span class="ow">in</span> <span class="n">severities</span><span class="p">:</span>
     <span class="n">strat_sev</span> <span class="o">=</span> <span class="n">selection</span><span class="p">[</span><span class="n">selection</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">==</span><span class="n">sev</span><span class="p">]</span>
-    
+
     <span class="n">severity_stats</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
         <span class="s1">'Severity'</span><span class="p">:</span> <span class="n">sev</span><span class="o">.</span><span class="n">title</span><span class="p">(),</span>
         <span class="s1">'N'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">strat_sev</span><span class="p">),</span>
@@ -10946,7 +10946,7 @@ KEY RECOMMENDATIONS:
 <span class="n">lang_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">selection</span><span class="p">[</span><span class="s1">'language'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
     <span class="n">lang_subset</span> <span class="o">=</span> <span class="n">selection</span><span class="p">[</span><span class="n">selection</span><span class="p">[</span><span class="s1">'language'</span><span class="p">]</span><span class="o">==</span><span class="n">lang</span><span class="p">]</span>
-    
+
     <span class="n">lang_data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
         <span class="s1">'Language'</span><span class="p">:</span> <span class="n">lang</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
         <span class="s1">'N Vignettes'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">lang_subset</span><span class="p">),</span>
@@ -11005,7 +11005,7 @@ KEY RECOMMENDATIONS:
     <span class="k">for</span> <span class="n">sev</span> <span class="ow">in</span> <span class="n">severities</span><span class="p">:</span>
         <span class="n">pure_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pure_al</span><span class="p">[(</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">==</span><span class="n">sev</span><span class="p">)])</span>
         <span class="n">strat_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">[(</span><span class="n">selection</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span><span class="o">==</span><span class="n">domain</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">selection</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">==</span><span class="n">sev</span><span class="p">)])</span>
-        
+
         <span class="k">if</span> <span class="n">pure_count</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">strat_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">missing_combos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                 <span class="s1">'Domain'</span><span class="p">:</span> <span class="n">domain</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(),</span>
@@ -11275,7 +11275,7 @@ KEY CORRECTED VALUES:
 
 <span class="c1"># ========== MAIN FIGURE 1 ==========</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
-<span class="n">n</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">uncertainty</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+<span class="n">n</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">uncertainty</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
                            <span class="n">color</span><span class="o">=</span><span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'neutral'</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">patch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">patches</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">:</span>
@@ -11362,7 +11362,7 @@ KEY CORRECTED VALUES:
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">))</span>
 <span class="n">sev_counts</span> <span class="o">=</span> <span class="n">selection</span><span class="p">[</span><span class="s1">'severity'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">sev_order</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">colors_sev</span> <span class="o">=</span> <span class="p">[</span><span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'high'</span><span class="p">],</span> <span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'medium'</span><span class="p">],</span> <span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'low'</span><span class="p">]]</span>
-<span class="n">wedges</span><span class="p">,</span> <span class="n">texts</span><span class="p">,</span> <span class="n">autotexts</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sev_counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+<span class="n">wedges</span><span class="p">,</span> <span class="n">texts</span><span class="p">,</span> <span class="n">autotexts</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sev_counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
                                    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s1">(</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">)'</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sev_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">sev_counts</span><span class="o">.</span><span class="n">values</span><span class="p">)],</span>
                                    <span class="n">autopct</span><span class="o">=</span><span class="s1">'</span><span class="si">%1.1f%%</span><span class="s1">'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors_sev</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">explode</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">],</span>
                                    <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s1">'fontsize'</span><span class="p">:</span> <span class="mi">7</span><span class="p">},</span> <span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s1">'edgecolor'</span><span class="p">:</span> <span class="s1">'white'</span><span class="p">,</span> <span class="s1">'linewidth'</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
@@ -11458,7 +11458,7 @@ KEY CORRECTED VALUES:
                <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">sorted_unc</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'primary'</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="s1">'Cumulative'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'primary'</span><span class="p">],</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.70</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Selection</span><span class="se">\n</span><span class="s1">(n=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span><span class="si">}</span><span class="s1">)'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span>
-       <span class="n">color</span><span class="o">=</span><span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'high'</span><span class="p">],</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">'round,pad=0.3'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> 
+       <span class="n">color</span><span class="o">=</span><span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'high'</span><span class="p">],</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">'round,pad=0.3'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span>
        <span class="n">edgecolor</span><span class="o">=</span><span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'high'</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Uncertainty score'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Cumulative percentage (%)'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
@@ -11515,7 +11515,7 @@ KEY CORRECTED VALUES:
 <span class="n">total_combs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">uncertainty</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'domain'</span><span class="p">,</span> <span class="s1">'severity'</span><span class="p">]))</span>
 <span class="n">hours</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">144</span><span class="p">]</span>
 <span class="n">coverage</span> <span class="o">=</span> <span class="p">[(</span><span class="n">pure_al_combs</span><span class="o">/</span><span class="n">total_combs</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
-<span class="n">mean_unc</span> <span class="o">=</span> <span class="p">[</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">selection</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+<span class="n">mean_unc</span> <span class="o">=</span> <span class="p">[</span><span class="n">pure_al</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">selection</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
             <span class="n">uncertainty</span><span class="p">[</span><span class="s1">'uncertainty_score'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()]</span>
 
 <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hours</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coverage</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'#999999'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">)</span>
@@ -11642,7 +11642,7 @@ KEY CORRECTED VALUES:
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">))</span>
 <span class="n">lang_counts</span> <span class="o">=</span> <span class="n">selection</span><span class="p">[</span><span class="s1">'language'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'primary'</span><span class="p">],</span> <span class="n">NATURE_COLORS</span><span class="p">[</span><span class="s1">'secondary'</span><span class="p">]]</span>
-<span class="n">wedges</span><span class="p">,</span> <span class="n">texts</span><span class="p">,</span> <span class="n">autotexts</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">lang_counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+<span class="n">wedges</span><span class="p">,</span> <span class="n">texts</span><span class="p">,</span> <span class="n">autotexts</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">lang_counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
                                    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">lang</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s1">(</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s1">)'</span> <span class="k">for</span> <span class="n">lang</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">lang_counts</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span>
                                    <span class="n">autopct</span><span class="o">=</span><span class="s1">'</span><span class="si">%1.1f%%</span><span class="s1">'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">explode</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span>
                                    <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s1">'fontsize'</span><span class="p">:</span> <span class="mi">7</span><span class="p">},</span> <span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s1">'edgecolor'</span><span class="p">:</span> <span class="s1">'white'</span><span class="p">,</span> <span class="s1">'linewidth'</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
@@ -12687,7 +12687,7 @@ All done. Next steps locally (after pulling or running in repo):
 <span class="kn">import</span><span class="w"> </span><span class="nn">ipynbname</span>
 
 <span class="c1"># ---------- helpers ----------</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">die</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">die</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">ERROR:"</span><span class="p">,</span> <span class="n">msg</span><span class="p">);</span> <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">headers</span><span class="p">(</span><span class="n">token</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>

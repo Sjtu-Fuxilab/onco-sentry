@@ -4598,4 +4598,3 @@ print(f"  - {dest_dir}/{stem}.stripped.ipynb")
 print(f"  - {dest_dir}/{stem}.py")
 print(f"  - {dest_dir}/{stem}.html")
 print("  - notebooks/index.json catalog updated.")
-
