@@ -1,33 +1,28 @@
 name: ci
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  push: { branches: [ main ] }
+  pull_request: { branches: [ main ] }
   workflow_dispatch:
-
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
-
-permissions:
-  contents: read
-
 jobs:
-  tests:
-    name: tests
-    if: ${{ github.actor != 'dependabot[bot]' }}
+  smoke:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-      - name: Install deps (best-effort)
+        with: { python-version: '3.10' }
+      - name: Rubric sanity
         run: |
-          python -m pip install -U pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt || true; fi
-          pip install pytest
-      - name: Run pytest (focused)
-        run: |
-          if [ -f tests/test_rubric.py ]; then pytest -q tests/test_rubric.py; else echo "No tests found"; fi
+          python - <<'PY'
+          import csv, sys
+          from pathlib import Path
+          p=Path("rubric/sms_items.csv")
+          if not p.exists():
+            print("rubric/sms_items.csv not found", file=sys.stderr); sys.exit(1)
+          rows=list(csv.DictReader(p.open(encoding="utf-8", newline="")))
+          if len(rows)!=13:
+            print(f"Expected 13 items, got {len(rows)}", file=sys.stderr); sys.exit(2)
+          ids=[r.get('item_id','') for r in rows]
+          if "no_medication_advice" not in ids:
+            print("Missing 'no_medication_advice'", file=sys.stderr); sys.exit(3)
+          print("Rubric OK.")
+          PY
