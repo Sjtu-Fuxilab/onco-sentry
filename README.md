@@ -1,5 +1,10 @@
 # 🛡️ ONCO-SENTRY: Oncology-Aware Mental Health Crisis Evaluation for LLMs
 
+[![CI](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml)
+[![pre-commit](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml/badge.svg?branch=main)](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml)
+[![CodeQL](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 **Safety Evaluation of Neural models in High-risk Triage for Mental Health**
 
 A guideline-grounded framework for evaluating LLM safety in mental health crisis scenarios,
