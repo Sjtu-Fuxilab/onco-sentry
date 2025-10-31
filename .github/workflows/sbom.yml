@@ -18,7 +18,7 @@ jobs:
           python -m pip install -U pip cyclonedx-bom pip-audit || true
           if [ -f requirements.txt ]; then cyclonedx-py --format json --output sbom.json || true; fi
           pip-audit -r requirements.txt || true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: sbom
