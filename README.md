@@ -111,3 +111,12 @@ This is a research evaluation tool, not a clinical system.
 - **Notebook outputs are stripped** automatically by a pre-commit hook (`nbstripout`) and enforced by CI on every push / PR.
 - Rendered artifacts (`*.html`, `*.pdf`, `*.svg`) are kept as documentation and **do not affect language statistics**.
 - To reproduce figures/tables, run the provided scripts/notebooks; artifacts will be written under `runs/` or `results/`.
+
+## 🔁 Reproducibility & Environment
+
+- **Docker**: `Dockerfile` provided (Python 3.10-slim). Build with `docker build -t onco-sentry .`.
+- **Dev Container**: `.devcontainer/` for VS Code / Codespaces.
+- **Environment**: `requirements.txt` + `environment.yml` (if present) with a snapshot `environment.lock.yml`.
+- **Coverage Gate**: GitHub Actions workflow `coverage.yml` fails if test coverage < **60%**.
+- **SBOM & Audit**: weekly `sbom.yml` generates a CycloneDX SBOM and runs `pip-audit` (non-blocking).
+- **CITATION**: See `CITATION.cff`. Please cite **Sanwal Ahmad Zafar** and **Assoc. prof. Wei Qin**.
