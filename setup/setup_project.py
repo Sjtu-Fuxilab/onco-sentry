@@ -16,5 +16,5 @@ from pathlib import Path
 def STAMP():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-# [INSERT YOUR SCRIPT 00 CODE HERE - from your original source]
+# TODO: implementation to be added (placeholder removed)
 # print('Script 00 complete')
