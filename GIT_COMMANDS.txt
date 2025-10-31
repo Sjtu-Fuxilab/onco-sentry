@@ -1,0 +1,16 @@
+# Git Commands for GitHub Upload
+cd "D:\个人文件夹\Sanwal\LLM\onco-sentry"
+git init
+git add .
+git commit -m "Initial commit: ONCO-SENTRY v1.0"
+git remote add origin https://github.com/Sjtu-Fuxilab/onco-sentry.git
+git branch -M main
+git push -u origin main
+
+# If the remote already has content:
+# git pull origin main --rebase
+# git push -u origin main
+
+# Optional: pre-commit
+# pip install pre-commit
+# pre-commit install
