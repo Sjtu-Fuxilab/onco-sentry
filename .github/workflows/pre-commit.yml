@@ -1,18 +1,24 @@
 name: pre-commit
-
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  run-pre-commit:
+  pre-commit:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.10'
       - name: Install pre-commit
         run: pip install pre-commit
-      - name: Run pre-commit
+      - name: Run pre-commit (all files)
         run: pre-commit run --all-files
