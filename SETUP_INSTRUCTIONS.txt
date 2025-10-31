@@ -1,6 +1,6 @@
 # Manual Setup Instructions
 
-1) Insert your real code where markers say [INSERT YOUR SCRIPT XX CODE HERE].
+1) Insert your real code where markers say TODO: implementation to be added (placeholder removed).
 2) Test:
    python setup/setup_project.py
    python scripts/01_generate_vignettes.py
