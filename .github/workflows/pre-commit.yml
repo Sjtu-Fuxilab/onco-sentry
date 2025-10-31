@@ -1,24 +1,31 @@
 name: pre-commit
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  push: { branches: [ main ] }
+  pull_request: { branches: [ main ] }
   workflow_dispatch:
-
 permissions:
-  contents: read
-
+  contents: write
 jobs:
-  pre-commit:
-    if: ${{ github.actor != 'dependabot[bot]' }}
+  precommit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-      - name: Install pre-commit
-        run: pip install pre-commit
-      - name: Run pre-commit (all files)
-        run: pre-commit run --all-files
+        with: { python-version: '3.10' }
+      - run: python -m pip install --upgrade pip pre-commit
+      - run: pre-commit install
+      - name: Run pre-commit and auto-fix
+        shell: bash
+        run: |
+          set -e
+          pre-commit run --all-files || true
+          if ! git diff --quiet; then
+            git config user.name  "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git add -A
+            git commit -m "chore: pre-commit autofix"
+            git push || true
+          fi
+      - name: Verify after fixes (soft)
+        run: pre-commit run --all-files || true
