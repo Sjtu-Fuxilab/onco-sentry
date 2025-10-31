@@ -5,8 +5,8 @@
 [![pre-commit](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml)
 [![codeql](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+**Safety evaluation of neural models in high-risk mental-health triage**
+*Evidence-based 13-item SMS (NICE NG225, WHO mhGAP, NCCN Distress, 988), 6 domains × 3 severities, EN+UR, ~40% oncology; **no real patient data** (expert-authored vignettes).*
 **Safety Evaluation of Neural models in High-risk Triage for Mental Health**
 A guideline-grounded framework for evaluating LLM safety in mental health crisis scenarios,
 with specialized support for oncology contexts and multilingual validation (English + Urdu).
