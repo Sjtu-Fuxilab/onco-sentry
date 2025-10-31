@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it.
+title: ONCO-SENTRY: Oncology-Aware Mental Health Crisis Evaluation for LLMs
+authors:
+  - family-names: Zafar
+    given-names: Sanwal Ahmad
+    affiliation: Shanghai Jiao Tong University
+  - family-names: Qin
+    given-names: Wei
+    affiliation: Shanghai Jiao Tong University
+date-released: 2025-10-31
+version: 1.0.0
+license: MIT
+repository-code: https://github.com/Sjtu-Fuxilab/onco-sentry.git
+type: software
