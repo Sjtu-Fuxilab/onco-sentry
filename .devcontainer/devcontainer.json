@@ -1,0 +1,11 @@
+{
+  "name": "onco-sentry",
+  "build": { "dockerfile": "Dockerfile", "context": "." },
+  "postCreateCommand": "pre-commit install || true",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python","ms-python.vscode-pylance","ms-toolsai.jupyter"]
+    }
+  }
+}
