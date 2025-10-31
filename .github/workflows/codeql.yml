@@ -1,11 +1,9 @@
 name: codeql
-
 on:
   push:
   pull_request:
   schedule:
     - cron: '0 6 * * 1'
-
 jobs:
   analyze:
     name: CodeQL Analyze
@@ -14,8 +12,6 @@ jobs:
       security-events: write
       actions: read
       contents: read
-    strategy:
-      fail-fast: false
     steps:
       - uses: actions/checkout@v4
       - uses: github/codeql-action/init@v3
