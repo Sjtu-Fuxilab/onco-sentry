@@ -107,6 +107,8 @@ See `rubric/sms_items.csv` (14 must-do, 10 no-go).
 **Authors**: Sanwal Ahmad Zafar and Assoc. prof. Wei Qin
 **Affiliation**: Shanghai Jiao Tong University
 **Email**: sanwalzafar@sjtu.edu.cn
+**Corresponding author:** Assoc. Prof. Wei Qin — wqin@sjtu.edu.cn
+
 ## ⚠️ Disclaimer
 This is a research evaluation tool, not a clinical system.
 **Emergency Resources**:
@@ -115,7 +117,7 @@ This is a research evaluation tool, not a clinical system.
 - 🇵🇰 Pakistan: Umang Helpline 0317-4288665
 *Last updated: 2025-10-31*
 ## Notebooks
-- **sentry.ipynb** — 20251031 — [notebooks/20251031_sentry](/Sjtu-Fuxilab/onco-sentry/tree/main/notebooks/20251031_sentry)
+- **sentry.ipynb** — 20251031 — [notebooks/20251031_sentry](notebooks/20251031_sentry/sentry.ipynb)
 ## Reproducibility & Repo Hygiene
 - This repository excludes **derived outputs** (e.g., `runs/`, `results/`, `figures/`, `tables/`, `reports/`, `logs/`, `models/`, `checkpoints/`) and caches from version control.
 - **Notebook outputs are stripped** automatically by a pre-commit hook (`nbstripout`) and enforced by CI on every push / PR.
