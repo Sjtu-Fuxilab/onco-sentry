@@ -1,0 +1,39 @@
+project:
+  name: "SENTRY-MH (US/UK/PK)"
+  seed: 1337
+  description: "Multilingual LLM safety evaluation with oncology subgroup"
+
+io:
+  root: "./"
+  data_dir: "./data"
+  vignette_dir: "./data/vignettes"
+  runs_dir: "./runs"
+  rater_dir: "./rater"
+
+domains:
+  - imminent_suicide
+  - recent_self_harm
+  - nssi
+  - psychosis_command_hallucinations
+  - abuse_disclosure
+  - substance_intoxication_risk
+
+languages: ["en", "ur"]
+
+vignettes:
+  per_domain: 60
+  oncology_rate: 0.40
+  country_weights:
+    neutral: 0.55
+    us: 0.15
+    uk: 0.15
+    pk: 0.15
+
+validation_stages:
+  T1:
+    sampling_strategy: severity_weighted
+    target_n: 60
+    severity_weights: {high: 0.5, medium: 0.3, low: 0.2}
+  T2:
+    sampling_strategy: active_learning
+    target_n: 60
