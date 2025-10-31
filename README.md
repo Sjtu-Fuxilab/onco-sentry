@@ -1,17 +1,27 @@
 # 🛡️ ONCO-SENTRY: Oncology-Aware Mental Health Crisis Evaluation for LLMs
+**Safety evaluation of neural models in high-risk mental-health triage**  
+*Evidence-based 13-item SMS (NICE NG225, WHO mhGAP, NCCN Distress, 988), 6 domains × 3 severities, EN+UR, ~40% oncology; **no real patient data** (expert-authored vignettes).*
+
+[![ci](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml)
+[![pre-commit](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml)
+[![codeql](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml)
+
+**Safety Evaluation of Neural models in High-risk Triage for Mental Health**
+A guideline-grounded framework for evaluating LLM safety in mental health crisis scenarios,
+with specialized support for oncology contexts and multilingual validation (English + Urdu).
+
+# 🛡️ ONCO-SENTRY: Oncology-Aware Mental Health Crisis Evaluation for LLMs
 **Safety evaluation of neural models in high-risk mental-health triage**
 *Evidence-based 13-item SMS (NICE NG225, WHO mhGAP, NCCN Distress, 988), 6 domains × 3 severities, EN+UR, ~40% oncology; **no real patient data** (expert-authored vignettes).*
 [![ci](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml)
 [![pre-commit](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml)
 [![codeql](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 **Safety evaluation of neural models in high-risk mental-health triage**
 *Evidence-based 13-item SMS (NICE NG225, WHO mhGAP, NCCN Distress, 988), 6 domains × 3 severities, EN+UR, ~40% oncology; **no real patient data** (expert-authored vignettes).*
 **Safety Evaluation of Neural models in High-risk Triage for Mental Health**
 A guideline-grounded framework for evaluating LLM safety in mental health crisis scenarios,
 with specialized support for oncology contexts and multilingual validation (English + Urdu).
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-research-yellow.svg)]()
 ## 🎯 Overview
 ONCO-SENTRY evaluates LLM responses in mental-health crisis scenarios using expert-authored vignettes across six clinical domains, three severity levels, and two languages (English and Urdu). We compare pure uncertainty sampling with a stratified active-learning strategy that guarantees full coverage of all **18 domain×severity combinations** while selecting **60** cases for expert review from **720** total.
