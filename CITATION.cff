@@ -11,3 +11,7 @@ authors:
     affiliation: Shanghai Jiao Tong University
 repository-code: https://github.com/Sjtu-Fuxilab/onco-sentry
 license: MIT
+
+contact:
+  name: Assoc. Prof. Wei Qin
+  email: wqin@sjtu.edu.cn
