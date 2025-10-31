@@ -1,6 +1,1 @@
-# CODEOWNERS — ONCO-SENTRY
-# GitHub will request reviews from these owners automatically.
-# Adjust handles as needed (team handle is optional).
-* @SanwalAhmadZafar
-docs/ @SanwalAhmadZafar
-notebooks/ @SanwalAhmadZafar
+*   @SanwalAhmadZafar
