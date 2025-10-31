@@ -1,2 +1,6 @@
 * text=auto eol=lf
 *.ipynb -diff
+docs/** linguist-documentation
+notebooks/**/*.html linguist-documentation
+**/*.html linguist-documentation
+.github/** linguist-generated
