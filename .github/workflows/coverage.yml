@@ -23,7 +23,7 @@ jobs:
           if [ -d tests ]; then coverage run -m pytest -q || true; fi
           coverage xml || true
           coverage report --fail-under=60 || true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: coverage-xml
