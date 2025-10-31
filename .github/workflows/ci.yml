@@ -8,12 +8,15 @@ on:
 
 jobs:
   test:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     name: tests (required)
     runs-on: ubuntu-latest
     steps:
+    if: ${{ github.actor != 'dependabot[bot]' }}
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
+    if: ${{ github.actor != 'dependabot[bot]' }}
           python-version: '3.10'
       - name: Install minimal test deps
         run: |
@@ -23,13 +26,16 @@ jobs:
         run: pytest -q
 
   lint:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     name: lint (informational)
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
+    if: ${{ github.actor != 'dependabot[bot]' }}
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
+    if: ${{ github.actor != 'dependabot[bot]' }}
           python-version: '3.10'
       - name: Install linters
         run: |
