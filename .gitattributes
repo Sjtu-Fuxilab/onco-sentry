@@ -4,3 +4,7 @@ docs/** linguist-documentation
 notebooks/**/*.html linguist-documentation
 **/*.html linguist-documentation
 .github/** linguist-generated
+# Treat rendered artifacts and docs as documentation (don’t skew language stats)
+**/*.pdf linguist-documentation
+**/*.svg linguist-documentation
+# CI files are generated/config
