@@ -43,7 +43,7 @@ onco-sentry/
 ```
 
 <!-- FIGTAB-LIST:BEGIN -->
-
+## 🖼️ Figures & 📄 Tables
 **Figures**
 - [Fig1A_Histogram.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig1A_Histogram.png)
 - [Fig1B_Scatter2D.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig1B_Scatter2D.png)
@@ -99,20 +99,6 @@ python scripts/05_t2_adjudication.py
 python scripts/06_irr_report.py
 python scripts/07_advanced_validation.py
 ```
-
-## 🖼️ Figures & 📄 Tables
-**Main Figures**
-- *(none found in repo)*
-
-**Supplementary Figures**
-- *(none found in repo)*
-
-**Main Tables**
-- *(none found in repo)*
-
-**Supplementary Tables**
-- *(none found in repo)*
-
 ## 🧪 SMS Rubric
 See `rubric/sms_items.csv` (**13** checklist items; paper-accurate IDs and definitions).
 
