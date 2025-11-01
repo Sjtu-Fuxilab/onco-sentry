@@ -1,0 +1,93 @@
+{
+  "generated_at_utc": "2025-11-01T01:45:59.465563+00:00",
+  "source": "D:\\个人文件夹\\Sanwal\\LLM\\Final Tables and Figures",
+  "figures": {
+    "main": [
+      "docs/figures/main/Fig1A_Histogram.png",
+      "docs/figures/main/Fig1B_Scatter2D.png",
+      "docs/figures/main/Fig1C_Density.png",
+      "docs/figures/main/Fig1D_Boxplot.png",
+      "docs/figures/main/Fig2A_Domains.png",
+      "docs/figures/main/Fig2B_Severity.png",
+      "docs/figures/main/Fig2C_PureAL.png",
+      "docs/figures/main/Fig2C_PureAL_Fixed.png",
+      "docs/figures/main/Fig2D_StratifiedAL.png",
+      "docs/figures/main/Fig2D_StratifiedAL_Fixed.png",
+      "docs/figures/main/Fig3A_StdMarginal.png",
+      "docs/figures/main/Fig3B_EntropyMarginal.png",
+      "docs/figures/main/Fig3C_Cumulative.png",
+      "docs/figures/main/Fig3D_Efficiency.png",
+      "docs/figures/main/Fig4A_DomainViolin.png",
+      "docs/figures/main/Fig4B_SeverityBox.png",
+      "docs/figures/main/Fig4C_Correlation.png",
+      "docs/figures/main/Fig5A_Language.png",
+      "docs/figures/main/Fig5B_Oncology.png",
+      "docs/figures/main/Fig6A_ExcludedBars.png",
+      "docs/figures/main/Fig6B_MeanUncHeatmap.png",
+      "docs/figures/main/Fig6C_CountMatrix.png",
+      "docs/figures/main/FigS1_Heterogeneity.png",
+      "docs/figures/main/FigS2_RaterStability.png",
+      "docs/figures/main/FigS3_Disagreement.png",
+      "docs/figures/main/FigS4_CriterionAgreement.png",
+      "docs/figures/main/FigS5_DetailedExcluded.png",
+      "docs/figures/main/FigS6A_OncologyHist.png",
+      "docs/figures/main/FigS6B_OncologyBox.png",
+      "docs/figures/main/FigS7_TopDisagreements.png",
+      "docs/figures/main/Figure 1.png",
+      "docs/figures/main/Figure 2.png",
+      "docs/figures/main/Figure 3.png",
+      "docs/figures/main/Figure 4.png"
+    ],
+    "supplementary": [
+      "docs/figures/supplementary/Figure S3.png",
+      "docs/figures/supplementary/S1.png",
+      "docs/figures/supplementary/S2.png",
+      "docs/figures/supplementary/S5.png",
+      "docs/figures/supplementary/S6.png",
+      "docs/figures/supplementary/Supplementary Figure S4.png"
+    ]
+  },
+  "tables": {
+    "main": [
+      "docs/tables/main/Fig1A_Histogram.pdf",
+      "docs/tables/main/Fig1B_Scatter2D.pdf",
+      "docs/tables/main/Fig1C_Density.pdf",
+      "docs/tables/main/Fig1D_Boxplot.pdf",
+      "docs/tables/main/Fig2A_Domains.pdf",
+      "docs/tables/main/Fig2B_Severity.pdf",
+      "docs/tables/main/Fig2C_PureAL.pdf",
+      "docs/tables/main/Fig2C_PureAL_Fixed.pdf",
+      "docs/tables/main/Fig2D_StratifiedAL.pdf",
+      "docs/tables/main/Fig2D_StratifiedAL_Fixed.pdf",
+      "docs/tables/main/Fig3A_StdMarginal.pdf",
+      "docs/tables/main/Fig3B_EntropyMarginal.pdf",
+      "docs/tables/main/Fig3C_Cumulative.pdf",
+      "docs/tables/main/Fig3D_Efficiency.pdf",
+      "docs/tables/main/Fig4A_DomainViolin.pdf",
+      "docs/tables/main/Fig4B_SeverityBox.pdf",
+      "docs/tables/main/Fig4C_Correlation.pdf",
+      "docs/tables/main/Fig5A_Language.pdf",
+      "docs/tables/main/Fig5B_Oncology.pdf",
+      "docs/tables/main/Fig6A_ExcludedBars.pdf",
+      "docs/tables/main/Fig6B_MeanUncHeatmap.pdf",
+      "docs/tables/main/Fig6C_CountMatrix.pdf",
+      "docs/tables/main/FigS1_Heterogeneity.pdf",
+      "docs/tables/main/FigS2_RaterStability.pdf",
+      "docs/tables/main/FigS3_Disagreement.pdf",
+      "docs/tables/main/FigS4_CriterionAgreement.pdf",
+      "docs/tables/main/FigS5_DetailedExcluded.pdf",
+      "docs/tables/main/FigS6A_OncologyHist.pdf",
+      "docs/tables/main/FigS6B_OncologyBox.pdf",
+      "docs/tables/main/FigS7_TopDisagreements.pdf",
+      "docs/tables/main/Main Tables.pdf"
+    ],
+    "supplementary": [
+      "docs/tables/supplementary/Supplementary Tables.pdf"
+    ]
+  },
+  "counts": {
+    "created": 72,
+    "updated": 0,
+    "skipped": 0
+  }
+}
