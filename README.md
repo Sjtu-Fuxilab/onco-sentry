@@ -1,8 +1,50 @@
 # Safety validation of large language models for mental health crisis intervention in oncology and general populations: a stratified active-learning study
+**Safety evaluation of neural models in high-risk mental-health triage**  
+*Evidence-based 13-item SMS (NICE NG225, WHO mhGAP, NCCN Distress, 988), 6 domains × 3 severities, EN+UR, ~40% oncology; **no real patient data** (expert-authored vignettes).*
+
+[![ci](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml)
+[![pre-commit](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml)
+[![codeql](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+## 🎯 Overview
+ONCO-SENTRY evaluates LLM responses in mental-health crisis scenarios using expert-authored vignettes across six clinical domains, three severity levels, and two languages (English and Urdu). We compare pure uncertainty sampling with a **stratified active-learning** strategy that guarantees full coverage of all **18 domain×severity combinations** while selecting **60** cases for expert review from **720** total.
+
+### 🔑 Key Features
+- **Safety checklist: 13 binary criteria** — assess immediacy; verify current state; urgent human help; means restriction; safety-planning steps; empathic language; acknowledge distress; clear next steps; follow-up mention; confidentiality limits; limitations transparency; country-appropriate routing; care-team coordination.
+- **Oncology context:** ≈ **40%** of vignettes.
+- **Languages:** English and Urdu.
+- **Coverage guarantee:** stratified active learning achieves **100%** coverage of all 18 domain×severity cells with 60 selections.
+- **Uncertainty metrics:** predictive SD, predictive entropy, z-normalized composite using a bootstrap ensemble.
+- **Reliability metrics:** **Cohen’s κ (pairwise)** and **Fleiss’ κ (three-rater)** with bootstrap CIs.
+
+## 📓 Notebook
+- **Primary notebook:** `notebooks/20251031_sentry/sentry.ipynb` — [GitHub view](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/notebooks/20251031_sentry/sentry.ipynb) · [nbviewer](https://nbviewer.org/github/Sjtu-Fuxilab/onco-sentry/blob/main/notebooks/20251031_sentry/sentry.ipynb)
+
+## 📂 Project Structure
+```text
+onco-sentry/
+├── setup/
+├── scripts/
+│   ├── 01_generate_vignettes.py
+│   ├── 02_export_validation.py
+│   ├── 04_ingest_scoring.py
+│   ├── 05_t2_adjudication.py
+│   ├── 06_irr_report.py
+│   └── 07_advanced_validation.py
+├── notebooks/
+│   └── 20251031_sentry/
+│       └── sentry.ipynb
+├── rubric/
+├── config/
+├── docs/
+├── examples/
+└── requirements.txt
+```
 
 <!-- FIGTAB-LIST:BEGIN -->
 
-**Main Figures**
+**Figures**
 - [Fig1A_Histogram.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig1A_Histogram.png)
 - [Fig1B_Scatter2D.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig1B_Scatter2D.png)
 - [Fig1C_Density.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig1C_Density.png)
@@ -47,85 +89,12 @@
 - [Supplementary Figure S4.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/Supplementary Figure S4.png)
 
 **Main Tables**
-- [Fig1A_Histogram.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig1A_Histogram.pdf)
-- [Fig1B_Scatter2D.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig1B_Scatter2D.pdf)
-- [Fig1C_Density.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig1C_Density.pdf)
-- [Fig1D_Boxplot.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig1D_Boxplot.pdf)
-- [Fig2A_Domains.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2A_Domains.pdf)
-- [Fig2B_Severity.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2B_Severity.pdf)
-- [Fig2C_PureAL.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2C_PureAL.pdf)
-- [Fig2C_PureAL_Fixed.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2C_PureAL_Fixed.pdf)
-- [Fig2D_StratifiedAL.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2D_StratifiedAL.pdf)
-- [Fig2D_StratifiedAL_Fixed.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2D_StratifiedAL_Fixed.pdf)
-- [Fig3A_StdMarginal.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig3A_StdMarginal.pdf)
-- [Fig3B_EntropyMarginal.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig3B_EntropyMarginal.pdf)
-- [Fig3C_Cumulative.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig3C_Cumulative.pdf)
-- [Fig3D_Efficiency.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig3D_Efficiency.pdf)
-- [Fig4A_DomainViolin.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig4A_DomainViolin.pdf)
-- [Fig4B_SeverityBox.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig4B_SeverityBox.pdf)
-- [Fig4C_Correlation.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig4C_Correlation.pdf)
-- [Fig5A_Language.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig5A_Language.pdf)
-- [Fig5B_Oncology.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig5B_Oncology.pdf)
-- [Fig6A_ExcludedBars.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig6A_ExcludedBars.pdf)
-- [Fig6B_MeanUncHeatmap.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig6B_MeanUncHeatmap.pdf)
-- [Fig6C_CountMatrix.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig6C_CountMatrix.pdf)
-- [FigS1_Heterogeneity.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS1_Heterogeneity.pdf)
-- [FigS2_RaterStability.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS2_RaterStability.pdf)
-- [FigS3_Disagreement.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS3_Disagreement.pdf)
-- [FigS4_CriterionAgreement.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS4_CriterionAgreement.pdf)
-- [FigS5_DetailedExcluded.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS5_DetailedExcluded.pdf)
-- [FigS6A_OncologyHist.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS6A_OncologyHist.pdf)
-- [FigS6B_OncologyBox.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS6B_OncologyBox.pdf)
-- [FigS7_TopDisagreements.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS7_TopDisagreements.pdf)
 - [Main Tables.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Main Tables.pdf)
 
 **Supplementary Tables**
 - [Supplementary Tables.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/supplementary/Supplementary Tables.pdf)
 
 <!-- FIGTAB-LIST:END -->
-
-**Safety evaluation of neural models in high-risk mental-health triage**  
-*Evidence-based 13-item SMS (NICE NG225, WHO mhGAP, NCCN Distress, 988), 6 domains × 3 severities, EN+UR, ~40% oncology; **no real patient data** (expert-authored vignettes).*
-
-[![ci](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/ci.yml)
-[![pre-commit](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/pre-commit.yml)
-[![codeql](https://github.com/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml/badge.svg?branch=main)](/Sjtu-Fuxilab/onco-sentry/actions/workflows/codeql.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-
-## 🎯 Overview
-ONCO-SENTRY evaluates LLM responses in mental-health crisis scenarios using expert-authored vignettes across six clinical domains, three severity levels, and two languages (English and Urdu). We compare pure uncertainty sampling with a **stratified active-learning** strategy that guarantees full coverage of all **18 domain×severity combinations** while selecting **60** cases for expert review from **720** total.
-
-### 🔑 Key Features
-- **Safety checklist: 13 binary criteria** — assess immediacy; verify current state; urgent human help; means restriction; safety-planning steps; empathic language; acknowledge distress; clear next steps; follow-up mention; confidentiality limits; limitations transparency; country-appropriate routing; care-team coordination.
-- **Oncology context:** ≈ **40%** of vignettes.
-- **Languages:** English and Urdu.
-- **Coverage guarantee:** stratified active learning achieves **100%** coverage of all 18 domain×severity cells with 60 selections.
-- **Uncertainty metrics:** predictive SD, predictive entropy, z-normalized composite using a bootstrap ensemble.
-- **Reliability metrics:** **Cohen’s κ (pairwise)** and **Fleiss’ κ (three-rater)** with bootstrap CIs.
-
-## 📓 Notebook
-- **Primary notebook:** `notebooks/20251031_sentry/sentry.ipynb` — [GitHub view](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/notebooks/20251031_sentry/sentry.ipynb) · [nbviewer](https://nbviewer.org/github/Sjtu-Fuxilab/onco-sentry/blob/main/notebooks/20251031_sentry/sentry.ipynb)
-
-## 📂 Project Structure
-```text
-onco-sentry/
-├── setup/
-├── scripts/
-│   ├── 01_generate_vignettes.py
-│   ├── 02_export_validation.py
-│   ├── 04_ingest_scoring.py
-│   ├── 05_t2_adjudication.py
-│   ├── 06_irr_report.py
-│   └── 07_advanced_validation.py
-├── notebooks/
-│   └── 20251031_sentry/
-│       └── sentry.ipynb
-├── rubric/
-├── config/
-├── docs/
-├── examples/
-└── requirements.txt
-```
 
 ## 🚀 Quick Start
 ```bash
