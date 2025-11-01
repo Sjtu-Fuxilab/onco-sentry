@@ -1,17 +1,19 @@
 cff-version: 1.2.0
-title: \"Stratified active learning for oncology crisis language model validation\"
-message: If you use this software, please cite it as below.
-type: software
+title: "Safety validation of large language models for mental health crisis intervention in oncology and general populations: a stratified active-learning study"
+message: "If you use this software, please cite it as below."
 authors:
   - family-names: Zafar
     given-names: Sanwal Ahmad
     affiliation: Shanghai Jiao Tong University
+    email: sanwalzafar@sjtu.edu.cn
   - family-names: Qin
     given-names: Wei
     affiliation: Shanghai Jiao Tong University
-repository-code: https://github.com/Sjtu-Fuxilab/onco-sentry
-license: MIT
-
+    email: wqin@sjtu.edu.cn
 contact:
-  name: Assoc. Prof. Wei Qin
-  email: wqin@sjtu.edu.cn
+  - family-names: Qin
+    given-names: Wei
+    email: wqin@sjtu.edu.cn
+repository-code: "https://github.com/Sjtu-Fuxilab/onco-sentry"
+license: MIT
+date-released: 2025-11-01
