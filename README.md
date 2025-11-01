@@ -1,4 +1,89 @@
 # Safety validation of large language models for mental health crisis intervention in oncology and general populations: a stratified active-learning study
+
+<!-- FIGTAB-LIST:BEGIN -->
+
+**Main Figures**
+- [Fig1A_Histogram.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig1A_Histogram.png)
+- [Fig1B_Scatter2D.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig1B_Scatter2D.png)
+- [Fig1C_Density.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig1C_Density.png)
+- [Fig1D_Boxplot.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig1D_Boxplot.png)
+- [Fig2A_Domains.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2A_Domains.png)
+- [Fig2B_Severity.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2B_Severity.png)
+- [Fig2C_PureAL.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2C_PureAL.png)
+- [Fig2C_PureAL_Fixed.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2C_PureAL_Fixed.png)
+- [Fig2D_StratifiedAL.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2D_StratifiedAL.png)
+- [Fig2D_StratifiedAL_Fixed.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2D_StratifiedAL_Fixed.png)
+- [Fig3A_StdMarginal.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig3A_StdMarginal.png)
+- [Fig3B_EntropyMarginal.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig3B_EntropyMarginal.png)
+- [Fig3C_Cumulative.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig3C_Cumulative.png)
+- [Fig3D_Efficiency.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig3D_Efficiency.png)
+- [Fig4A_DomainViolin.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig4A_DomainViolin.png)
+- [Fig4B_SeverityBox.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig4B_SeverityBox.png)
+- [Fig4C_Correlation.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig4C_Correlation.png)
+- [Fig5A_Language.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig5A_Language.png)
+- [Fig5B_Oncology.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig5B_Oncology.png)
+- [Fig6A_ExcludedBars.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig6A_ExcludedBars.png)
+- [Fig6B_MeanUncHeatmap.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig6B_MeanUncHeatmap.png)
+- [Fig6C_CountMatrix.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig6C_CountMatrix.png)
+- [FigS1_Heterogeneity.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS1_Heterogeneity.png)
+- [FigS2_RaterStability.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS2_RaterStability.png)
+- [FigS3_Disagreement.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS3_Disagreement.png)
+- [FigS4_CriterionAgreement.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS4_CriterionAgreement.png)
+- [FigS5_DetailedExcluded.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS5_DetailedExcluded.png)
+- [FigS6A_OncologyHist.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS6A_OncologyHist.png)
+- [FigS6B_OncologyBox.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS6B_OncologyBox.png)
+- [FigS7_TopDisagreements.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS7_TopDisagreements.png)
+- [Figure 1.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Figure 1.png)
+- [Figure 2.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Figure 2.png)
+- [Figure 3.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Figure 3.png)
+- [Figure 4.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Figure 4.png)
+
+**Supplementary Figures**
+- [Figure S3.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/Figure S3.png)
+- [S1.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S1.png)
+- [S2.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S2.png)
+- [S5.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S5.png)
+- [S6.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S6.png)
+- [Supplementary Figure S4.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/Supplementary Figure S4.png)
+
+**Main Tables**
+- [Fig1A_Histogram.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig1A_Histogram.pdf)
+- [Fig1B_Scatter2D.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig1B_Scatter2D.pdf)
+- [Fig1C_Density.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig1C_Density.pdf)
+- [Fig1D_Boxplot.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig1D_Boxplot.pdf)
+- [Fig2A_Domains.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2A_Domains.pdf)
+- [Fig2B_Severity.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2B_Severity.pdf)
+- [Fig2C_PureAL.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2C_PureAL.pdf)
+- [Fig2C_PureAL_Fixed.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2C_PureAL_Fixed.pdf)
+- [Fig2D_StratifiedAL.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2D_StratifiedAL.pdf)
+- [Fig2D_StratifiedAL_Fixed.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig2D_StratifiedAL_Fixed.pdf)
+- [Fig3A_StdMarginal.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig3A_StdMarginal.pdf)
+- [Fig3B_EntropyMarginal.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig3B_EntropyMarginal.pdf)
+- [Fig3C_Cumulative.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig3C_Cumulative.pdf)
+- [Fig3D_Efficiency.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig3D_Efficiency.pdf)
+- [Fig4A_DomainViolin.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig4A_DomainViolin.pdf)
+- [Fig4B_SeverityBox.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig4B_SeverityBox.pdf)
+- [Fig4C_Correlation.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig4C_Correlation.pdf)
+- [Fig5A_Language.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig5A_Language.pdf)
+- [Fig5B_Oncology.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig5B_Oncology.pdf)
+- [Fig6A_ExcludedBars.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig6A_ExcludedBars.pdf)
+- [Fig6B_MeanUncHeatmap.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig6B_MeanUncHeatmap.pdf)
+- [Fig6C_CountMatrix.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Fig6C_CountMatrix.pdf)
+- [FigS1_Heterogeneity.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS1_Heterogeneity.pdf)
+- [FigS2_RaterStability.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS2_RaterStability.pdf)
+- [FigS3_Disagreement.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS3_Disagreement.pdf)
+- [FigS4_CriterionAgreement.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS4_CriterionAgreement.pdf)
+- [FigS5_DetailedExcluded.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS5_DetailedExcluded.pdf)
+- [FigS6A_OncologyHist.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS6A_OncologyHist.pdf)
+- [FigS6B_OncologyBox.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS6B_OncologyBox.pdf)
+- [FigS7_TopDisagreements.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/FigS7_TopDisagreements.pdf)
+- [Main Tables.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Main Tables.pdf)
+
+**Supplementary Tables**
+- [Supplementary Tables.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/supplementary/Supplementary Tables.pdf)
+
+<!-- FIGTAB-LIST:END -->
+
 **Safety evaluation of neural models in high-risk mental-health triage**  
 *Evidence-based 13-item SMS (NICE NG225, WHO mhGAP, NCCN Distress, 988), 6 domains × 3 severities, EN+UR, ~40% oncology; **no real patient data** (expert-authored vignettes).*
 
@@ -105,3 +190,8 @@ See `rubric/sms_items.csv` (**13** checklist items; paper-accurate IDs and defin
 MIT — see [LICENSE](LICENSE).
 
 *Last updated: 2025-11-01*
+
+## Notebooks
+- **sentry.ipynb** — 20251031 — [notebooks/20251031_sentry/sentry.ipynb](/Sjtu-Fuxilab/onco-sentry/tree/main/notebooks/20251031_sentry/sentry.ipynb)
+
+Corresponding author: **Assoc. prof. Wei Qin** (wqin@sjtu.edu.cn)
