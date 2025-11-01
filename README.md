@@ -53,8 +53,6 @@ onco-sentry/
 - [Fig2B_Severity.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2B_Severity.png)
 - [Fig2C_PureAL.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2C_PureAL.png)
 - [Fig2C_PureAL_Fixed.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2C_PureAL_Fixed.png)
-- [Fig2D_StratifiedAL.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2D_StratifiedAL.png)
-- [Fig2D_StratifiedAL_Fixed.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig2D_StratifiedAL_Fixed.png)
 - [Fig3A_StdMarginal.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig3A_StdMarginal.png)
 - [Fig3B_EntropyMarginal.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig3B_EntropyMarginal.png)
 - [Fig3C_Cumulative.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig3C_Cumulative.png)
@@ -67,27 +65,15 @@ onco-sentry/
 - [Fig6A_ExcludedBars.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig6A_ExcludedBars.png)
 - [Fig6B_MeanUncHeatmap.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig6B_MeanUncHeatmap.png)
 - [Fig6C_CountMatrix.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Fig6C_CountMatrix.png)
-- [FigS1_Heterogeneity.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS1_Heterogeneity.png)
-- [FigS2_RaterStability.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS2_RaterStability.png)
-- [FigS3_Disagreement.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS3_Disagreement.png)
-- [FigS4_CriterionAgreement.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS4_CriterionAgreement.png)
-- [FigS5_DetailedExcluded.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS5_DetailedExcluded.png)
-- [FigS6A_OncologyHist.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS6A_OncologyHist.png)
-- [FigS6B_OncologyBox.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS6B_OncologyBox.png)
-- [FigS7_TopDisagreements.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/FigS7_TopDisagreements.png)
-- [Figure 1.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Figure 1.png)
-- [Figure 2.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Figure 2.png)
-- [Figure 3.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Figure 3.png)
-- [Figure 4.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/main/Figure 4.png)
 
 **Supplementary Figures**
+- [Figure S1.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S1.png)
+- [Figure S2.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S2.png)
 - [Figure S3.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/Figure S3.png)
-- [S1.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S1.png)
-- [S2.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S2.png)
-- [S5.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S5.png)
-- [S6.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S6.png)
-- [Supplementary Figure S4.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/Supplementary Figure S4.png)
-
+- [Figure S4.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/Supplementary Figure S4.png)
+- [Figure S5.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S5.png)
+- [Figure S6.png](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/figures/supplementary/S6.png)
+- 
 **Main Tables**
 - [Main Tables.pdf](https://github.com/Sjtu-Fuxilab/onco-sentry/blob/main/docs/tables/main/Main Tables.pdf)
 
