@@ -1,8 +1,0 @@
-# Snapshot of environment.yml at 2025-10-31 18:46:51 (no solver pin)
-name: onco-sentry
-channels: [conda-forge, defaults]
-dependencies:
-  - python>=3.8
-  - pip
-  - pip:
-      - -r requirements.txt
