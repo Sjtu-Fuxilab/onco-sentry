@@ -1,4 +1,0 @@
-*.html linguist-generated=true
-docs/** linguist-documentation
-*.svg linguist-generated=true
-*.ipynb linguist-detectable=true
