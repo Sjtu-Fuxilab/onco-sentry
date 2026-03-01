@@ -1,9 +1,0 @@
-# outputs & caches
-**/.ipynb_checkpoints/
-**/__pycache__/
-outputs/
-artifacts/
-data/
-.env
-*.log
-*.tmp
